@@ -1,0 +1,266 @@
+/* File Details Modal Styles */
+
+.modal-xl {
+    max-width: 1200px;
+}
+
+/* Ensure modal body doesn't hide content */
+#fileDetailsModal .modal-body {
+    overflow: visible !important;
+    min-height: 90vh;
+    display: flex !important;
+}
+
+/* Ensure page preview container is visible */
+#pagePreviewContainer {
+    display: block !important;
+    visibility: visible !important;
+    overflow-y: auto !important;
+    padding: 5px 4px !important;
+    background: #fff !important;
+    padding-top: 15px !important;
+}
+
+/* Reduce preview page sizes */
+.preview-page {
+    margin-bottom: 8px !important;
+    aspect-ratio: 210/297 !important;
+    min-height: 95px !important;
+    max-height: 475px !important;
+}
+
+/* Ensure row container displays both columns */
+#fileDetailsModal .row {
+    display: flex !important;
+    width: 100% !important;
+    overflow: visible !important;
+}
+
+/* Ensure left column is visible */
+#fileDetailsModal .col-md-5 {
+    display: flex !important;
+    flex: 0 0 41.66667% !important;
+    max-width: 41.66667% !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    min-width: 0 !important;
+}
+
+/* Ensure right column is visible and not cut off */
+#fileDetailsModal .col-md-7 {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 0 0 58.33333% !important;
+    max-width: 58.33333% !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    min-width: 0 !important;
+}
+
+/* Ensure pills are visible */
+#fileDetailsModal .badge {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Ensure title and description are visible */
+#fileTitle,
+#fileDescription {
+    display: block !important;
+    visibility: visible !important;
+}
+
+.page-preview-container {
+    max-height: 500px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    padding: 20px 15px;
+    border-radius: 8px;
+}
+
+/* Fixed close button at top-right of page */
+#fileDetailsModal .modal-header-close {
+    position: fixed;
+    top: 40px;
+    right: 20px;
+    z-index: 2000;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #333;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#fileDetailsModal .modal-header-close:hover {
+    color: #81c408;
+}
+
+.preview-page canvas {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.lock-overlay {
+    background: rgba(0, 0, 0, 0.8) !important;
+    color: white;
+}
+
+.lock-overlay i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ff9800;
+}
+
+.lock-overlay p {
+    font-weight: 600;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.file-info {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #81c408;
+}
+
+.file-info p {
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.file-info strong {
+    color: #333;
+    font-weight: 600;
+}
+
+#fileTitle {
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+#fileDescription {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Pagination buttons */
+#prevPageBtn,
+#nextPageBtn {
+    background-color: #81c408;
+    border-color: #81c408;
+    color: white;
+    font-weight: 600;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+}
+
+#prevPageBtn:hover:not(:disabled),
+#nextPageBtn:hover:not(:disabled) {
+    background-color: #6ba006;
+    border-color: #6ba006;
+    transform: translateY(-2px);
+}
+
+#prevPageBtn:disabled,
+#nextPageBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#pageIndicator {
+    font-weight: 600;
+    color: #333;
+    min-width: 150px;
+}
+
+/* Modal button styling */
+.modal-body .btn-primary {
+    background-color: #81c408;
+    border-color: #81c408;
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+    transition: all 0.3s ease;
+}
+
+.modal-body .btn-primary:hover {
+    background-color: #6ba006;
+    border-color: #6ba006;
+    transform: translateY(-2px);
+}
+
+.modal-body .btn-secondary {
+    padding: 12px;
+    font-weight: 600;
+}
+
+/* Responsive modal adjustments */
+@media (max-width: 768px) {
+    .modal-xl {
+        max-width: 95%;
+    }
+    
+    .row.g-4 > .col-md-5,
+    .row.g-4 > .col-md-7 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .page-preview-container {
+        max-height: 400px;
+    }
+}
+
+/* External fixed close button styling */
+.modal-close-btn-fixed {
+    transition: transform 0.3s ease, background-color 0.3s ease !important;
+}
+
+.modal-close-btn-fixed:hover {
+    background-color: #6ba006 !important;
+    transform: rotate(90deg) scale(1.1) !important;
+}
+
+.modal-close-btn-fixed:active {
+    transform: rotate(90deg) scale(0.95) !important;
+}
+
+/* Close button styling */
+.btn-close-modal {
+    transition: all 0.3s ease !important;
+}
+
+.btn-close-modal:hover {
+    background-color: #6ba006 !important;
+    transform: rotate(90deg) !important;
+}
+
+.btn-close-modal:active {
+    transform: rotate(90deg) scale(0.95) !important;
+}
+
+/* Purchase button glow styling */
+#purchaseBtn {
+    transition: all 0.3s ease;
+}
+
+#purchaseBtn:focus,
+#purchaseBtn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 10px rgba(129, 196, 8, 0.5);
+}
+
+#purchaseBtn:active {
+    box-shadow: 0 0 15px rgba(129, 196, 8, 0.7);
+}
+

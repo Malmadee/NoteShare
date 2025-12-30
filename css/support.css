@@ -1,0 +1,277 @@
+/*** Button Start ***/
+.btn {
+    font-weight: 600;
+    transition: .5s;
+}
+
+.btn.border-secondary {
+    transition: 0.5s;
+}
+
+.btn.border-secondary:hover {
+    background: var(--bs-secondary) !important;
+    color: var(--bs-white) !important;
+}
+/*** Button End ***/
+
+/*** Color Variables & Overrides ***/
+:root {
+  --primary-color: #80C157;   /* green */
+  --secondary-color: #81c408; /* green */
+  --accent-color: #fcbd40;    /* golden yellow */
+}
+
+/* Override Bootstrap primary color to match our theme */
+.text-primary, 
+h1.text-primary, 
+h2.text-primary, 
+h3.text-primary, 
+h4.text-primary {
+    color: var(--primary-color) !important;
+}
+
+/* Grey text for descriptions and secondary content */
+.contact p {
+    color: #999999;
+}
+
+.contact h4 {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Ensure form controls maintain proper styling */
+.form-control {
+    border-color: #ddd !important;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 0.2rem rgba(128, 193, 87, 0.25) !important;
+}
+
+/* Submit button styling - orange/gold border and hover */
+.btn.form-control {
+    border: 2px solid var(--accent-color) !important;
+    background-color: white !important;
+    color: var(--primary-color) !important;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn.form-control:hover {
+    border-color: var(--accent-color) !important;
+    background-color: var(--accent-color) !important;
+    color: white !important;
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover {
+    background-color: #46924B !important;
+    border-color: #46924B !important;
+}
+
+/*** Contact Page Start ***/
+.contact {
+    background: #f8f9fa !important;
+    padding-top: 200px !important;
+    margin-top: 0 !important;
+}
+
+body {
+    padding-top: 0 !important;
+}
+
+.container-fluid.contact {
+    padding-top: 200px !important;
+}
+
+.contact > .container {
+    padding-top: 0 !important;
+}
+
+.contact .p-5 {
+    margin-top: 0 !important;
+}
+
+/* Translucent accent card: put the contact content (map, inputs, submit,
+   address, contact, telephone) inside a soft #fcbd40 backing */
+.contact .p-5.bg-light {
+    /* Stronger orange overlay: increase opacity so the accent is less translucent */
+    background-color: rgba(252, 189, 64, 0.28) !important; /* more visible #fcbd40 */
+    border: 1px solid rgba(252, 189, 64, 0.36) !important;
+    box-shadow: 0 14px 34px rgba(128, 193, 87, 0.08) !important;
+    color: #ffffff !important;
+}
+
+/* Make the heading and paragraph text inside the card readable on the accent */
+/* Ensure the primary heading inside the card is green (site theme) */
+.contact .p-5.bg-light .text-center .text-primary,
+.contact .p-5.bg-light h1.text-primary {
+    color: var(--primary-color) !important;
+}
+
+/* Slightly darker paragraph text under the heading for better contrast */
+.contact .p-5.bg-light p {
+    color: #6b6b6b !important;
+}
+
+/* Inputs and textarea inside the card should be white and readable */
+.contact .p-5.bg-light .form-control,
+.contact .p-5.bg-light textarea,
+.contact .p-5.bg-light input[type="email"],
+.contact .p-5.bg-light input[type="text"] {
+    /* Inputs should be white for clear contrast inside the orange card */
+    background-color: #ffffff !important;
+    color: #222 !important;
+    border: 1px solid rgba(0,0,0,0.08) !important;
+    padding: 0.65rem !important;
+}
+
+.contact .p-5.bg-light .form-control::placeholder,
+.contact .p-5.bg-light textarea::placeholder,
+.contact .p-5.bg-light input[type="email"]::placeholder,
+.contact .p-5.bg-light input[type="text"]::placeholder {
+    color: #6b6b6b !important; /* neutral placeholder matching paragraph text */
+}
+
+/* Keep the submit button visible and inside the card */
+.contact .p-5.bg-light .btn.form-control {
+    background-color: #ffffff !important;
+    color: var(--primary-color) !important;
+    border: 2px solid var(--accent-color) !important;
+}
+
+/* Ensure hover inside the contact card makes the submit button orange */
+.contact .p-5.bg-light .btn.form-control:hover {
+    background-color: var(--accent-color) !important;
+    color: white !important;
+    border-color: var(--accent-color) !important;
+}
+
+/* Info boxes on the right (address/mail/phone) should be slightly white to contrast */
+.contact .p-5.bg-light .d-flex.p-4.bg-white {
+    background-color: rgba(255,255,255,0.95) !important;
+}
+
+/* Ensure the iframe map appears flush inside the card */
+.contact .p-5.bg-light iframe {
+    background: transparent !important;
+    border-radius: 6px !important;
+}
+
+/* Put the main intro (Get in touch + description) into a white card
+   similar to the address/info boxes on the right. Targets the
+   `.text-center.mx-auto` wrapper already present in the HTML. */
+.contact .p-5.bg-light .text-center.mx-auto {
+    background-color: rgba(255,255,255,0.98) !important;
+    padding: 1.25rem 1.5rem !important;
+    border-radius: 0.5rem !important;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.06) !important;
+    max-width: 700px !important;
+    margin-bottom: 1.25rem !important;
+    color: #222 !important;
+}
+
+/* Ensure heading inside the white intro card is green and paragraph darker */
+.contact .p-5.bg-light .text-center.mx-auto h1.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.contact .p-5.bg-light .text-center.mx-auto p {
+    color: #6b6b6b !important;
+}
+
+/* Restore intended element colors inside the translucent contact card
+   so inner headings, paragraphs, and links keep the site's theme colors. */
+.contact .p-5.bg-light .text-primary,
+.contact .p-5.bg-light h1.text-primary {
+    color: var(--primary-color) !important; /* green heading */
+}
+
+.contact .p-5.bg-light p {
+    color: #999999 !important; /* keep grey paragraph text */
+}
+
+.contact .p-5.bg-light h4 {
+    color: var(--primary-color) !important;
+    font-weight: 700 !important;
+}
+
+.contact .p-5.bg-light a {
+    color: var(--primary-color) !important;
+}
+
+/* Keep small info boxes (address/mail/phone) visually white and intact */
+.contact .p-5.bg-light .d-flex.p-4 {
+    background-color: rgba(255,255,255,0.95) !important;
+    color: #222 !important;
+}
+
+/* Make the small descriptive text under Address / Mail Us / Telephone
+   slightly darker for improved contrast and readability. */
+.contact .p-5.bg-light .d-flex.p-4 p,
+.contact .p-5.bg-light .d-flex.p-4 .mb-2 {
+    color: #6b6b6b !important;
+}
+/*** Contact Page End ***/
+
+/*** Footer Styling Override for Bootstrap Compatibility ***/
+.s-footer {
+    /* Remove the default top margin so footer background meets page content
+       (prevents a white gap between content and footer on support page) */
+    margin-top: 0 !important;
+    /* add internal top padding instead of external margin for spacing */
+    padding-top: 2.5rem;
+}
+
+/* Ensure footer links and text are properly styled */
+.s-footer h1 {
+    color: white !important;
+    font-weight: 700 !important;
+}
+
+.s-footer h5 {
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+/* Footer button styling */
+.s-footer .btn--primary {
+    background-color: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+    color: white !important;
+    transition: 0.3s;
+}
+
+.s-footer .btn--primary:hover {
+    background-color: #e6ac2e !important;
+    border-color: #e6ac2e !important;
+}
+
+/* Footer input styling */
+.s-footer input[type="email"],
+.s-footer input[type="text"] {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+}
+
+.s-footer input[type="email"]::placeholder,
+.s-footer input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.s-footer input[type="email"]:focus,
+.s-footer input[type="text"]:focus {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.2rem rgba(252, 189, 64, 0.25) !important;
+}
+
+/*** Footer End ***/

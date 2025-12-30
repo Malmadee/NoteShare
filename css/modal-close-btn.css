@@ -1,0 +1,33 @@
+/* Circular Close Button with Wallet-like Animation */
+.modal-close-btn {
+    position: fixed !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background-color: #fcbd40 !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    z-index: 1050 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.modal-close-btn::after {
+    content: '×' !important;
+    font-size: 28px !important;
+    color: white !important;
+    font-weight: 300 !important;
+}
+
+.modal-close-btn:hover {
+    background-color: #81c408 !important;
+    transform: scale(1.1) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+.modal-close-btn:active {
+    transform: scale(0.95) !important;
+}

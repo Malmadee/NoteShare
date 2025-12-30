@@ -1,0 +1,180 @@
+/*
+Theme Name: FoodMart - Cart Popup
+Theme URI: https://templatesjungle.com/
+Author: TemplatesJungle
+Description: FoodMart Cart Popup - Simplified Version
+Version: 1.0
+*/
+
+/* Minimal cart CSS — only what's needed for the popup */
+
+/* Scope cart popup variables to the offcanvas container to avoid
+   globally overriding site fonts/weights when this CSS is loaded. */
+.offcanvas{
+  --cart-primary: #ffc43f;
+  --cart-dark: #222;
+  --cart-muted: #747474;
+  --cart-border: #f7f7f7;
+  --cart-body-font: "Open Sans", sans-serif;
+  --cart-heading-font: "Raleway", sans-serif;
+}
+
+/* Do NOT set height: 100% on html/body - it causes layout shifts when scrollbar appears/disappears */
+
+/* Apply the cart font family and muted color only inside the cart offcanvas */
+.offcanvas, .offcanvas * {
+  font-family: var(--cart-body-font);
+  color: var(--cart-muted);
+}
+
+/* Offcanvas sizing and layout */
+.offcanvas{--bs-offcanvas-width:400px}
+@media(max-width:576px){.offcanvas{--bs-offcanvas-width:100%}}
+
+.offcanvas-header{padding:1rem;border-bottom:1px solid rgba(0,0,0,0.08)}
+ .offcanvas-header .btn-close{width:1.5rem;height:1.5rem}
+ .offcanvas-body{padding:1.25rem;overflow-y:auto}
+
+ /* Style for the offcanvas title (Your Cart) */
+ .offcanvas-header .offcanvas-title{
+  color:#81c408;
+  font-weight:800;
+  font-family:var(--cart-heading-font);
+  margin-left:1rem;
+ }
+ .offcanvas-body h5,.offcanvas-body h6{font-family:var(--cart-heading-font);color:var(--cart-dark);margin:0 0 .5rem}
+.offcanvas-body .list-group{margin-bottom:1rem;padding:1rem;background:#f9f9f9;border:none;border-radius:0.375rem}
+.offcanvas-body .list-group-item{padding:.75rem 0;background:transparent;border:none;border-bottom:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;align-items:flex-start}
+#offcanvasCart .offcanvas-body .list-group-item:last-child strong,
+#offcanvasCart .list-group-item:last-child strong {
+  font-weight: 900 !important;
+  color: #000000 !important;
+}
+
+/* Make product titles inside the cart less bold so they don't overpower the UI */
+#offcanvasCart .offcanvas-body .list-group-item h6,
+#offcanvasCart .list-group-item h6 {
+  font-weight: 600 !important;
+  margin: 0 !important;
+}
+.offcanvas-body .list-group-item small{display:none}
+
+/* Remove pill (light red) */
+.remove-pill{
+  display:inline-block;
+  background:#fff0f0;
+  color:#b30000;
+  border:1px solid #f5c2c2;
+  padding:.18rem .45rem;
+  border-radius:999px;
+  font-size:.78rem;
+  line-height:1;
+  margin-top:.35rem;
+  cursor:pointer;
+  transition:background .12s ease, color .12s ease, border-color .12s ease, transform .06s ease;
+}
+.offcanvas #offcanvasCart .remove-pill:hover,
+#offcanvasCart .remove-pill:hover {
+  background:#c62828 !important;
+  color:#ffffff !important;
+  border-color:#c62828 !important;
+  transform:translateY(-1px) !important;
+}
+.remove-pill:focus{outline:none;box-shadow:0 0 0 3px rgba(198,40,40,0.12)}
+
+/* Price pill (coin + numeric value) */
+.price-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  /* faint green fill */
+  background: rgba(129,196,8,0.06);
+  color:#81c408;
+  padding:.38rem .75rem;
+  font-weight:700;
+  font-size:1rem;
+  line-height:1;
+  border-radius:999px;
+  border:1px solid rgba(129,196,8,0.18);
+}
+.price-pill .coin{
+  width:18px;
+  height:auto;
+  display:inline-block;
+}
+.price-pill img{display:block}
+
+/* Clean style for Total: no fill, no border */
+.price-pill--clean{
+  background:transparent !important;
+  border:none !important;
+  color:#81c408;
+  padding:.18rem .6rem;
+}
+
+.badge{background:var(--cart-primary);color:#fff}
+.offcanvas #offcanvasCart .btn-primary,
+#offcanvasCart .btn-primary {
+  background: #fcbd40 !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+
+.offcanvas #offcanvasCart .btn-primary:hover,
+#offcanvasCart .btn-primary:hover,
+.offcanvas #offcanvasCart .btn-primary:focus,
+#offcanvasCart .btn-primary:focus {
+  background: #80C157 !important;
+  border-color: #80C157 !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+/* Extra high-specificity selector for the Check Out button to out-rank other page rules */
+#offcanvasCart .w-100.btn.btn-primary.btn-lg {
+  background: #fcbd40 !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+#offcanvasCart .w-100.btn.btn-primary.btn-lg:hover,
+#offcanvasCart .w-100.btn.btn-primary.btn-lg:focus {
+  background: #80C157 !important;
+  color: #ffffff !important;
+}
+.btn-lg{padding:.75rem 1rem;font-weight:600;border-radius:.5rem}
+
+/* Header tweaks */
+header{background:#fff}
+.btn-light{background:#f6f6f6;border:1px solid #f6f6f6;color:var(--cart-dark)}
+.btn-light:hover{background:#e6e6e6}
+
+/* small helpers */
+.order-md-last{width:100%}
+
+/* keep qty width if present */
+.cart .product-qty{min-width:130px}
+
+/* Custom Close Button */
+.btn-close-custom{
+  width:36px;
+  height:36px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  border-radius:50%;
+  border:2px solid #ccc;
+  background:#e8e8e8;
+  color:#333;
+  cursor:pointer;
+}
+.btn-close-custom svg{display:block;width:16px;height:16px}
+.btn-close-custom path{stroke:currentColor}
+.btn-close-custom:focus{outline:none;box-shadow:none}
+.btn-close-custom:hover,
+.btn-close-custom:focus{
+  background:#81c408;
+  color:#ffffff;
+  border-color:#81c408;
+}

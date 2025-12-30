@@ -1,0 +1,470 @@
+/*-------------------------------------
+  Navbar & Topbar Styles Only
+--------------------------------------*/
+
+/* Color variables (define your palette) */
+:root {
+  --primary-color: #80c157;   /* green */
+  --secondary-color: #81c408; /* green */
+  --light-color: #f8f9fa;
+  --white-color: #ffffff;
+  --dark-color: #000000;
+  --accent-color: #fcbd40;    /* golden yellow */
+}
+
+/* ======================================
+   LAYOUT SHIFT FIX FOR MODALS/OFFCANVAS
+   ====================================== */
+
+/* Bootstrap's .modal-open class automatically handles scrollbar compensation
+   Do NOT add padding-right rules to .fixed-top - it causes navbar shifting */
+html {
+  /* No overflow-y rules needed here */
+}
+
+/*** Button Utilities (used in navbar) ***/
+.btn {
+  font-weight: 600;
+  transition: .5s;
+}
+
+/*** Topbar Start ***/
+.fixed-top {
+  background: var(--white-color);
+  border: 0;
+  z-index: 999;
+  /* Smooth transition when navBar.js changes the `top` property */
+  transition: top 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+/* Ensure the fixed container can be translated smoothly when we hide the topbar */
+/* removed container transform transition to use original top offset behavior */
+
+.topbar {
+  background: var(--primary-color) !important;
+  color: var(--white-color);
+  padding: 12px 35px;              /* increased horizontal padding */
+  border-radius: 230px 100px;
+  width: 100%;
+  min-height: 50px;                /* ensures tall enough topbar */
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.topbar .top-info,
+.topbar .top-link {
+  font-size: 16px; /* restore sensible default size */
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.topbar .top-link a {
+  color: var(--white-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.topbar .top-info i,
+.topbar .top-link i {
+  color: var(--accent-color) !important;
+}
+
+.topbar .top-link a small:hover {
+  color: var(--white-color) !important;
+  transition: 0.3s;
+}
+
+.topbar .top-link a small:hover i {
+  color: var(--accent-color) !important;
+}
+/*** Topbar End ***/
+
+
+/*** Navbar Start ***/
+.navbar {
+  height: auto;
+  padding: 14px 0; /* white section height */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: var(--white-color);
+}
+
+.navbar .navbar-brand h1 {
+  color: var(--primary-color) !important;
+  font-weight: 900 !important;
+  margin: 0;
+}
+
+/* nav links */
+.navbar .navbar-nav .nav-link {
+  padding: 10px 15px;
+  margin: 0 8px; /* gap between items */
+  font-size: 16px;
+  /* normalize weight & font across pages; use Open Sans first for consistency */
+  font-family: 'Open Sans', 'Poppins', sans-serif !important;
+  font-weight: 700 !important; /* slightly bolder nav links as requested */
+  color: var(--secondary-color);
+  transition: 0.5s;
+}
+
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+  color: var(--accent-color) !important;
+}
+
+
+/*** Navbar End ***/
+
+/* --- Logo Styling --- */
+.logo-img {
+  height: 60px;                 /* Keep desired height */
+  width: auto;                  /* Maintain aspect ratio */
+  max-width: 200px;
+  object-fit: contain;
+  position: relative;
+  top: -4px;                    /* Raise the logo slightly above the text baseline */
+}
+
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;                    /* Space between logo and text */
+}
+
+.navbar-brand h1 {
+  font-size: 2.5rem;            /* Match logo height */
+  white-space: nowrap;
+}
+
+.navbar-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px; /* Equal spacing between items */
+}
+
+/* Force all items to same height */
+.navbar-icons a, 
+.navbar-icons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;       /* same height for all */
+}
+
+/* Cart Icon */
+.cart-icon {
+    text-decoration: none !important;
+    border: none !important;
+    background: none !important;
+    outline: none !important;
+}
+
+.cart-icon i {
+    font-size: 1.95rem;  /* reduce size to match 32px height */
+    transition: transform 0.3s;
+    color: var(--accent-color);
+}
+
+.cart-icon:hover i {
+    transform: scale(1.1);
+    color: var(--accent-color);
+}
+
+/* Coin Icon */
+.wallet-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.wallet-img:hover {
+    transform: scale(1.1);
+}
+
+/* Logout Button */
+.logout-btn {
+    background: #80C157;   /* Primary color */
+    color: white;
+    font-weight: bolder;
+    height: 32px;
+    width: 110px;
+    padding: 0 12px;
+    font-size: 13px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.logout-btn:hover {
+    background: #46924B;   /* Slightly darker on hover */
+    transform: scale(1.05);
+    color: white;
+    font-size: 14px;
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+/* Start Learning Button */
+.scroll-to-section a {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: bold;
+    padding: 14px 40px;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.scroll-to-section a:hover {
+    background-color: #e6ac2e;
+    transform: scale(1.05);
+}
+
+/* Topbar email and address link styling */
+.topbar .top-info a,
+.topbar .top-link a {
+    text-decoration: none;
+    color: var(--white-color);
+}
+
+.topbar .top-info a:hover,
+.topbar .top-link a:hover {
+    text-decoration: none;
+}
+
+/* Override Bootstrap text-secondary class for icons */
+.topbar .text-secondary {
+    color: var(--accent-color) !important;
+}
+
+/* Carousel item styling - uniform height and width */
+.services .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  min-height: 220px;
+    height: 100%;
+}
+
+/* Upcoming Meetings section styling */
+section.upcoming-meetings .section-heading h2 {
+    color: white;
+    font-weight: bold;
+}
+
+section.upcoming-meetings:after {
+  content: '';
+  display: block;
+  width: calc(100% - 80px);
+  height: 3px;
+  background-color: var(--accent-color); /* use primary accent (#fcbd40) */
+  margin: 6px 40px 0 40px; /* bring the line closer to the heading */
+}
+
+/* -------------------------------------
+   Testimonial overrides and styles
+   ------------------------------------- */
+.testimonial-header h4 {
+  color: #80c157 !important; /* testimonial word should be green */
+  font-weight: 700;
+}
+
+.testimonial-header {
+  --type-weight-headings: 900;
+}
+
+.testimonial-header h1 {
+  color: #fcbd40 !important; /* "Our Students are Saying" should be golden */
+  font-weight: 900 !important; /* bolder */
+}
+
+.testimonial-carousel .testimonial-item {
+  background: rgba(255, 255, 255, 0.08) !important; /* translucent box for reviews */
+  border-radius: 18px; /* curved boxes */
+  padding: 1.25rem; /* inner spacing */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+.testimonial-carousel .testimonial-item .border-bottom {
+  border-color: #e6ac2e !important; /* inner line orange */
+}
+
+.testimonial-carousel .testimonial-item .fa-quote-right {
+  color: #e6ac2e !important; /* orange quote */
+  opacity: 0.95;
+}
+
+.testimonial-carousel .testimonial-item .fas.fa-star,
+.testimonial-carousel .testimonial-item .fa-star {
+  color: var(--primary-color) !important; /* green stars */
+}
+
+
+
+/* Ensure testimonial avatar container is transparent */
+.testimonial-item .bg-secondary {
+  background: transparent !important;
+}
+
+/* Keep testimonial text legible */
+.testimonial-item p { color: rgba(0,0,0,0.85); }
+
+/* Reviewer name styling inside testimonial cards */
+.testimonial-item {
+  --type-weight-headings: 800;
+}
+
+.testimonial-item h4 {
+  color: #80c157 !important; /* reviewer names green */
+  font-weight: 800 !important; /* bold names */
+}
+
+/* Hide carousel navigation inside testimonial sections */
+.testimonial-carousel .owl-nav,
+.testimonial-carousel .owl-prev,
+.testimonial-carousel .owl-next,
+.testimonial-carousel .swiper-button-prev,
+.testimonial-carousel .swiper-button-next {
+  display: none !important;
+}
+
+/* Fix: restore boldness for strong/b elements and common utility classes
+   Sometimes adding the cart popup CSS introduces rules or variable ordering
+   that reduce perceived boldness site-wide. Force a visible bold weight
+   for these elements to ensure consistent appearance. */
+b,
+strong,
+.fw-bold,
+.font-weight-bold {
+  font-weight: 700 !important;
+}
+
+/* Purchases page tweaks: slightly smaller topbar font and ensure brand bolder */
+body.purchases-page .topbar .top-info,
+body.purchases-page .topbar .top-link {
+  font-size: 15.5px;
+}
+
+body.purchases-page .topbar .top-info i,
+body.purchases-page .topbar .top-link i {
+  font-size: 1.1em; /* slightly larger icons */
+}
+
+body.purchases-page .navbar .navbar-nav .nav-link {
+  font-size: 16px;
+  margin: 0 8px;
+  font-weight: 600 !important; /* less bold on purchases page */
+}
+
+body.purchases-page .navbar-brand h1 {
+  font-weight: 900 !important;
+}
+
+
+/* Spinner and Back-to-Top Button Styles */
+.site-spinner-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 200000 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: none !important;
+  will-change: opacity, visibility !important;
+  pointer-events: none !important;
+  backface-visibility: hidden !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.site-spinner-overlay.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.site-spinner {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 10px !important;
+  color: var(--primary-color, #80c157) !important;
+  will-change: auto !important;
+  backface-visibility: hidden !important;
+}
+
+.spinner-ring {
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50% !important;
+  border: 6px solid rgba(0, 0, 0, 0.08) !important;
+  border-top-color: var(--primary-color, #80c157) !important;
+  animation: spin 1s linear infinite !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  transform: translateZ(0) !important;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-text {
+  display: none !important;
+}
+
+.back-to-top {
+  position: fixed !important;
+  right: 18px !important;
+  bottom: 22px !important;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  background: var(--primary-color, #80c157) !important;
+  color: #fff !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(8px) !important;
+  transition: opacity 0.2s, transform 0.2s !important;
+  z-index: 200000 !important;
+  cursor: pointer !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+}
+
+.back-to-top.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+.back-to-top:hover {
+  transform: translateY(-4px);
+}
+
+.back-to-top i {
+  font-size: 1rem;
+}
+
+

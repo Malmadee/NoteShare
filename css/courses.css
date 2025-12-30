@@ -1,0 +1,655 @@
+/* ========== Course Styles (from css/style.css) ========== */
+
+/* Global rule: Remove ALL outlines and focus rings from file-type-box, file-icon, file-label and their parents */
+.file-type-box,
+.file-type-box *,
+.file-icon,
+.file-icon *,
+.file-label,
+.file-label *,
+.courses-list-item .file-type-box,
+.courses-list-item .file-type-box * {
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-color: transparent !important;
+  text-decoration-style: none !important;
+  text-underline-offset: 0 !important;
+  text-decoration-thickness: 0 !important;
+  background-image: none !important;
+  filter: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  --bs-link-color: transparent !important;
+  --bs-link-hover-color: transparent !important;
+}
+
+.file-type-box:focus-visible,
+.file-icon:focus-visible,
+.file-label:focus-visible,
+.file-type-box:focus,
+.file-icon:focus,
+.file-label:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+
+/* Force 3 courses per row for .our-courses section only */
+.our-courses .col-lg-4 {
+  flex: 0 0 calc(33.333333% - 10px) !important;
+  max-width: calc(33.333333% - 10px) !important;
+}
+
+/* Smaller tiles - 2 per row on desktop, 1 on mobile */
+.col-lg-4 {
+  flex: 0 0 calc(50% - 10px) !important;
+  max-width: calc(50% - 10px) !important;
+}
+
+/* Course List Item Grid Styling */
+.courses-list-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: transform .35s ease, box-shadow .35s ease;
+  /* Rounded corners for course boxes */
+  border-radius: 12px;
+  /* subtle card shadow to lift tiles off the page */
+  box-shadow: 0 6px 18px rgba(20,20,20,0.06);
+  background: #fff; /* ensure consistent background behind image overlay */
+  width: 100%;
+  max-width: 100%;
+  text-decoration: none !important;
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-color: transparent !important;
+  box-shadow: 0 6px 18px rgba(20,20,20,0.06) !important;
+}
+
+/* Remove Bootstrap focus ring from anchor tag */
+.courses-list-item:focus,
+.courses-list-item:focus-visible {
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-color: transparent !important;
+  box-shadow: 0 6px 18px rgba(20,20,20,0.06) !important;
+}
+
+/* Remove all pseudo-elements that might contain the blue line */
+.courses-list-item::before,
+.courses-list-item::after,
+.file-type-box::before,
+.file-type-box::after,
+.file-icon::before,
+.file-icon::after,
+.file-label::before,
+.file-label::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Aggressive text-decoration removal on anchor and all children */
+.courses-list-item,
+.courses-list-item * {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-color: transparent !important;
+  text-decoration-style: none !important;
+  text-underline-offset: 0 !important;
+  text-decoration-thickness: 0 !important;
+  text-decoration-skip: none !important;
+  text-decoration-skip-ink: none !important;
+  -webkit-text-decoration-color: transparent !important;
+  -webkit-text-decoration-line: none !important;
+  -webkit-text-decoration-skip: none !important;
+  -webkit-text-decoration-skip-ink: none !important;
+}
+
+/* Specifically target file-label text and remove any underlines */
+.file-label {
+  text-decoration: none !important;
+  text-underline-offset: 0 !important;
+  -webkit-text-decoration-color: transparent !important;
+}
+
+.file-label::first-line {
+  text-decoration: none !important;
+  text-underline-offset: 0 !important;
+}
+
+/* Remove border-bottom from text which might appear as underline */
+.file-label,
+.file-icon {
+  border-bottom: 0 !important;
+  border-width: 0 !important;
+}
+
+/* Force remove any text-decoration-color that might be blue */
+.file-label,
+.file-icon,
+.courses-list-item {
+  --bs-link-color: transparent !important;
+  --bs-link-hover-color: transparent !important;
+  color: inherit !important;
+}
+
+/* Override Bootstrap's link-related CSS variables */
+:root {
+  --bs-link-color: transparent !important;
+}
+
+a.courses-list-item {
+  --bs-link-color: transparent !important;
+  color: inherit !important;
+}
+
+.courses-list-item > img {
+  position: relative;
+  transition: transform .6s ease;
+  width: 100% !important;
+  height: 350px !important;
+  object-fit: cover !important;
+  object-position: top center !important;
+  display: block !important;
+  background: #f5f5f5 !important;
+}
+
+/* File type box styling */
+.file-type-box {
+  width: 100% !important;
+  height: 250px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #f5f5f5 !important;
+  position: relative !important;
+  transition: transform .6s ease !important;
+  border: none !important;
+  border-bottom: none !important;
+  border-top: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-color: transparent !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+.file-type-box[data-file-type="pdf"] {
+  background: #ffffff !important;
+}
+
+.file-type-box[data-file-type="pptx"] {
+  background: #ffffff !important;
+}
+
+.file-type-box[data-file-type="docx"] {
+  background: #ffffff !important;
+}
+
+.file-type-box[data-file-type="xlsx"] {
+  background: #ffffff !important;
+}
+
+.file-type-box[data-file-type="video"] {
+  background: #ffffff !important;
+}
+
+.file-type-box[data-file-type="image"] {
+  background: #ffffff !important;
+}
+
+.file-type-box[data-file-type="archive"] {
+  background: #ffffff !important;
+}
+
+/* Color file labels to match icon color */
+.file-type-box[data-file-type="pdf"] .file-label {
+  color: #FF5252 !important;
+}
+
+.file-type-box[data-file-type="pptx"] .file-label {
+  color: #FF9800 !important;
+}
+
+.file-type-box[data-file-type="docx"] .file-label {
+  color: #2196F3 !important;
+}
+
+.file-type-box[data-file-type="xlsx"] .file-label {
+  color: #4CAF50 !important;
+}
+
+.file-type-box[data-file-type="video"] .file-label {
+  color: #9C27B0 !important;
+}
+
+.file-type-box[data-file-type="image"] .file-label {
+  color: #00BCD4 !important;
+}
+
+.file-type-box[data-file-type="archive"] .file-label {
+  color: #795548 !important;
+}
+
+.file-type-box:hover,
+.file-type-box:focus,
+.file-type-box:focus-visible,
+.file-type-box:active {
+  border: none !important;
+  outline: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+}
+
+.file-icon {
+  width: 80px !important;
+  height: 80px !important;
+  margin-bottom: 5px !important;
+  display: block !important;
+  margin-top: -30px !important;
+  border: none !important;
+  border-width: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.file-icon:hover,
+.file-icon:focus,
+.file-icon:focus-visible,
+.file-icon:active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-color: transparent !important;
+}
+
+.file-label {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #333 !important;
+  letter-spacing: 1px !important;
+  margin-top: 8px !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-top: 8px !important;
+  line-height: normal !important;
+  display: inline-block !important;
+  background: transparent !important;
+}
+
+.file-label:hover,
+.file-label:focus,
+.file-label:focus-visible,
+.file-label:active {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-color: transparent !important;
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+}
+
+/* Additional specificity for any border styling */
+a .file-label,
+.courses-list-item .file-label {
+  border: none !important;
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+/* Course Text Overlay (for grid items) */
+.courses-list-item .courses-text {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+  /* solid green background at bottom with sharp cutoff - no fade */
+  background: #81c408;
+  transition: background .35s ease, transform .35s ease;
+  z-index: 1;
+  /* keep overlay corners matching parent so gradient doesn't overflow */
+  border-radius: 0 0 12px 12px;
+  padding: 0;
+  min-height: 60px;
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  top: auto !important;
+  inset: auto 0 0 0 !important;
+}
+
+/* Course List Item Hover Effect */
+.courses-list-item:hover > img {
+  transform: scale(1.06);
+}
+
+.courses-list-item {
+  text-decoration: none !important;
+}
+
+.courses-list-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(20,20,20,0.12);
+  text-decoration: none !important;
+}
+
+.courses-list-item:hover .courses-text {
+  border-bottom: none !important;
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+/* Explicitly remove any visual line between file-type-box and courses-text */
+.file-type-box::after,
+.file-label::after,
+.file-icon::after {
+  display: none !important;
+  content: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Course Text H4 Styling */
+.courses-list-item .courses-text h4 {
+  color: #fcbd40;
+  font-size: 1.15rem;
+  font-weight: 800 !important;
+  margin: 0 !important;
+  padding: 0px 18px !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  position: absolute;
+  z-index: 10;
+  line-height: 1.15;
+  text-align: left;
+  width: calc(100% - 36px);
+  bottom: 50%;
+  transform: translateY(50%);
+  left: 0px;
+  display: block !important;
+}
+
+.courses-text .border-top {
+  border-top: none !important;
+  width: 100%;
+  margin-top: 3px;
+  position: relative;
+  z-index: 2;
+  background: transparent !important;
+  display: none;
+}
+
+.courses-text .d-flex {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.courses-text .d-flex span {
+  font-size: 0.95rem;
+  color: #81c408;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  /* align icon/profile and text and provide a small gap */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* gap between icon/profile image and the text */
+}
+
+/* Top-left category badge and bottom-right price badge */
+.courses-list-item .badge-category {
+  position: absolute;
+  bottom: 15px;
+  right: 12px;
+  z-index: 3;
+  background: #fcbd40;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.courses-list-item .badge-price {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  background: #81c408;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.courses-list-item .badge-price img.badge-coin {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+/* Profile image used in some cards: keep it small and circular */
+.courses-text .d-flex span img.profile-img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: inline-block;
+}
+
+/* Bottom row coin display - show coins (no currency symbol) */
+.courses-text .d-flex .coin-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.courses-text .d-flex .coin-count img.coin-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ========== Our Courses Section (embedded grid) ========== */
+.our-courses {
+  padding: 40px 0;
+  background: #FFFFFF;
+  width: 100%;
+  display: block;
+  --type-weight-headings: 800;
+}
+
+.our-courses .section-heading {
+  margin-bottom: 40px;
+}
+
+.our-courses .section-heading h2 {
+  /* Heading styling for our-courses */
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  margin-bottom: 15px;
+  font-size: 2rem;
+}
+
+/* ========== Pagination Styling ========== */
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.page-link {
+  position: relative;
+  display: inline-block !important;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #fcbd40;
+  background-color: #FFFFFF;
+  border: 1px solid #dee2e6;
+  transition: .3s;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.page-link:hover {
+  z-index: 2;
+  color: #fff;
+  background-color: #e6ac2e;
+  border-color: #e6ac2e;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #FFFFFF;
+  background-color: #e6ac2e;
+  border-color: #e6ac2e;
+}
+
+.page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: auto;
+  background-color: #FFFFFF;
+  border-color: #dee2e6;
+  opacity: 0.5;
+}
+
+.pagination-lg .page-link {
+  padding: 0.75rem 1.5rem !important;
+  font-size: 1.25rem !important;
+}
+
+.pagination-lg .page-item:first-child .page-link {
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+}
+
+.pagination-lg .page-item:last-child .page-link {
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .courses-list-item > img {
+    height: 280px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    display: block !important;
+  }
+  
+  .pagination-lg .page-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+  }
+}
+
+/* Ensure 3 columns on large screens (explicit stronger rule) */
+@media (min-width: 992px) {
+  .container .row > .col-lg-4 {
+    flex: 0 0 33.333333% !important;
+    max-width: 33.333333% !important;
+  }
+}
+
+/* Remove any cross-page gap applied to .row so 3 columns fit cleanly here */
+.container.py-5 > .row {
+  gap: 0 !important;
+}
+
+/* Ensure the section heading is visible and has an accent line */
+.section-heading {
+  position: relative;
+  display: block;
+  text-align: center;
+  padding-bottom: 6px;
+}
+
+.section-heading h2 {
+  color: #ffffff; /* white, per request */
+  font-weight: 800;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.section-heading::after {
+  content: "";
+  display: block;
+  height: 5px;
+  /* Match the container width so the line aligns with the three-column course grid */
+  width: 100%;
+  margin: 8px 0 0 0; /* sit directly under heading and span container */
+  background: #fcbd40; /* accent color */
+  border-radius: 3px;
+}
+
+@media (max-width: 576px) {
+  .section-heading::after { width: 90px; }
+}
+
+/* Small coin icon used for price/rating */
+.coin-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+  object-fit: contain;
+}

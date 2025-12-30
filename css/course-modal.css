@@ -1,0 +1,270 @@
+/* Course detail modal styles */
+.course-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.course-modal-backdrop.open {
+  display: flex;
+}
+.modal-blur *:not(.course-modal-backdrop) {
+  /* fallback - not used directly */
+}
+.course-modal {
+  background: #fff;
+  width: 95%;
+  max-width: 1100px;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.modal-blur > :not(.course-modal-backdrop) {
+  filter: blur(6px) saturate(.95);
+  transition: filter 0.25s ease;
+  pointer-events: none;
+}
+
+/* Left content variants */
+.cm-left-viewer {
+  width: 100%;
+}
+.cm-pages {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.cm-page-large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* for lock overlay */
+  padding: 6px;
+}
+.cm-page-large img {
+  /* maintain A4 aspect ratio but keep smaller than fullscreen */
+  aspect-ratio: 210 / 297;
+  max-height: 66vh;
+  max-width: 480px;
+  width: auto;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  object-fit: contain;
+}
+
+/* Navigation buttons left/right of preview */
+.cm-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: none;
+  background: #ffffff;
+  color: #333;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+.cm-nav-btn:active { transform: translateY(1px); }
+.cm-nav-btn[disabled] { opacity: 0.38; cursor: default; }
+
+/* Lock overlay shown when the current page is locked */
+.cm-page-lock {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.48));
+  color: #fff;
+  z-index: 20;
+  pointer-events: none;
+  flex-direction: column;
+  text-align: center;
+}
+.cm-page-lock.show { display: flex; pointer-events: auto; }
+.cm-page-lock .lock-inner { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.cm-page-lock .lock-inner i { font-size: 36px; }
+.cm-thumbs-row {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* match JS gap value */
+  margin-top: 12px;
+  justify-content: center; /* center the row under the large preview */
+}
+.cm-thumbs-viewport {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+.cm-thumbs-track {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.cm-thumb {
+  overflow: hidden;
+  border-radius: 6px;
+  position: relative;
+  cursor: pointer;
+  flex: 0 0 auto;
+  aspect-ratio: 210 / 297;
+  max-height: 64px; /* make thumbnails noticeably smaller */
+}
+.cm-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.cm-thumb.locked::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.95);
+  font-size: 22px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.45));
+}
+.cm-thumb.locked { cursor: default; }
+
+.cm-video-wrap { position: relative; width:100%; }
+.cm-video-wrap video { width: 100%; max-height:520px; border-radius:6px; background:#000; }
+.cm-video-lock {
+  position: absolute; inset: 0; display: none; align-items:center; justify-content:center; flex-direction:column;
+  background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.55));
+  color: #fff; font-size: 22px;
+}
+.cm-video-lock.show { display:flex; }
+.cm-video-lock .lock-icon { font-size: 36px; margin-bottom: 8px; }
+
+/* ensure coin small class used earlier */
+.coin-sm { width: 20px; height: 20px; object-fit: contain; }
+.course-modal .left-image {
+  background: #f6f6f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+}
+.course-modal .left-image img {
+  width: 100%;
+  height: auto;
+  max-width: 420px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.course-modal .right-content {
+  padding: 32px 36px;
+}
+.course-modal h2 {
+  margin: 0 0 18px 0; /* increase gap between title and pills */
+  font-size: 28px;
+  color: #81c408; /* green title in popup */
+  font-weight: 800;
+}
+.course-modal .category,
+.course-modal .creator {
+  display: inline-block;
+  background: #fcbd40; /* golden yellow pill */
+  color: #ffffff; /* white text */
+  padding: 6px 12px;
+  border-radius: 999px; /* pill shape */
+  margin-right: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.course-modal .category { font-weight: 700; }
+.course-modal .creator { font-weight: 700; }
+.course-modal .price-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-weight: 700;
+  font-size: 20px;
+  color: #333;
+}
+.course-modal .price-row img.coin-sm {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+.course-modal .description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.course-modal .add-to-cart {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* tighter gap between icon and label */
+  padding: 10px 20px;
+  border-radius: 20px; /* more curvy */
+  background: #81c408; /* green fill */
+  color: #ffffff; /* white text */
+  border: 2px solid #81c408; /* green border */
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.course-modal .add-to-cart .cart-icon-in-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; /* slightly smaller icon box */
+  height: 18px;
+  color: #ffffff; /* white icon */
+  font-size: 14px;
+}
+.course-modal .add-to-cart:hover {
+  background: #fcbd40;
+  color: #ffffff;
+  border-color: #fcbd40;
+}
+.course-modal .add-to-cart:hover .cart-icon-in-btn { color: #ffffff; }
+
+/* Course box overrides for title/category/price visuals */
+/* Note: course tile text color should remain as defined in `courses.css`. */
+
+/* Ensure cart icon color in tiles (if used) matches navbar */
+.cart-icon-in-btn { color: #fcbd40; }
+.course-modal .close-btn {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  background: #f2f2f2; /* light gray circular background */
+  border: none;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 24px; /* larger cross */
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(0,0,0,0.6);
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+/* In case the close button contains an inner element, ensure the symbol is large */
+.course-modal .close-btn.cm-close,
+.course-modal .close-btn.cm-close i,
+.course-modal .close-btn.cm-close svg {
+  font-size: 24px;
+  line-height: 1;
+}
+@media (max-width: 880px) {
+  .course-modal { grid-template-columns: 1fr; }
+  .course-modal .left-image { padding: 18px; }
+  .course-modal .right-content { padding: 20px; }
+}

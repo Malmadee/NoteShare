@@ -1,0 +1,866 @@
+/* Force table data text color to #555555, except headings */
+.purchases-table tbody td {
+  color: #555555 !important;
+}
+/* Center specific columns in purchases table */
+.purchases-table td.text-center,
+.purchases-table th.text-center {
+  text-align: center;
+}
+/* ============================================
+   Purchases Table Styling
+   ============================================ */
+
+:root {
+  --primary-color: #80C157;
+  --secondary-color: #81c408;
+  --accent-color: #fcbd40;
+  --text-gray: #999999;
+  --border-gray: #e0e0e0;
+  --white-color: #ffffff;
+  --dark-color: #000000;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f5f5f5; /* match uploads page background */
+}
+
+.purchases-container {
+  max-width: 1350px;
+  margin: 12px auto; /* reduced vertical margin to tighten gap below stats */
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.purchases-table-section {
+  background-color: var(--white-color);
+  border-radius: 8px;
+  padding: 24px; /* tightened so table edges sit closer to the card */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.purchases-table {
+  width: 100%; /* occupy full card width so edges are closer */
+  max-width: none;
+  margin: 0;
+  border-collapse: collapse;
+  padding: 0;
+}
+
+/* Ensure table text uses the same site font (Open Sans) */
+.purchases-table thead th {
+  font-family: 'Open Sans', sans-serif; /* match dropdown font for headers only */
+  font-size: 1.05rem;
+  font-weight: 700; /* less bold than 900 */
+  line-height: 1.45; /* taller appearance */
+}
+
+/* Table Header */
+.purchases-table thead {
+  border-bottom: 2px solid var(--border-gray);
+}
+
+.purchases-table thead tr {
+  background-color: rgba(128, 128, 128, 0.12); /* less opaque grey */
+}
+
+.purchases-table thead th, .purchases-table thead tr th {
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 700 !important; /* reduced from 900 to 700 */
+  font-size: 14px;
+  color: #81c408 !important;  /* green shade for headings */
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Table Body */
+.purchases-table tbody tr {
+  border-bottom: 1px solid var(--border-gray);
+  transition: background-color 0.3s ease;
+}
+
+.purchases-table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.purchases-table tbody td {
+  padding: 12px 10px; /* reduced padding to bring cells closer to edges */
+  font-size: 14px;
+  color: #555555 !important;
+  font-weight: 500 !important; /* slightly heavier for table data rows (force override) */
+}
+
+/* Make Title, Purchase Date and File Size match the Price column styling */
+.purchases-table tbody td.course-title,
+.purchases-table tbody td.purchase-date,
+.purchases-table tbody td.file-size {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600 !important; /* slightly less bold */
+  color: #555555 !important;
+  font-size: 14px;
+}
+
+/* Title Column */
+.course-title {
+  /* ...existing code... */
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* Category Badge */
+.category-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  min-width: 100px;
+}
+
+.category-notes {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.category-videos {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.category-exam {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.category-others {
+  background-color: #f3e5f5;
+  color: #6a1b9a;
+}
+
+/* Price with Coin */
+.price-with-coin {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600 !important; /* slightly less bold than 700 */
+  /* ...existing code... */
+}
+
+.price-coin-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Purchase Date */
+.purchase-date {
+  /* ...existing code... */
+  font-size: 13px;
+}
+
+/* File Size */
+.file-size {
+  /* ...existing code... */
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Action Buttons */
+.action-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px 8px;
+  transition: color 0.2s ease, transform 0.2s ease;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-btn {
+  color: var(--primary-color);
+}
+
+/* Force black text for specific columns in purchases table */
+.purchases-table .course-title {
+  /* color override removed */
+}
+.download-btn:hover {
+  color: var(--secondary-color);
+  transform: scale(1.15);
+}
+
+.view-btn {
+  color: var(--accent-color);
+}
+
+.view-btn:hover {
+  color: #e6ac2e;
+  transform: scale(1.15);
+}
+
+.delete-btn {
+  color: #e74c3c;
+}
+
+.delete-btn:hover {
+  color: #c0392b;
+  transform: scale(1.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .purchases-table-section {
+    padding: 15px;
+  }
+
+  .purchases-table thead th {
+    padding: 12px 8px;
+    font-size: 12px;
+  }
+
+  .purchases-table tbody td {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+
+  .course-title {
+    font-size: 14px;
+  }
+
+  .category-badge {
+    font-size: 11px;
+    padding: 4px 8px;
+    min-width: 80px;
+  }
+
+  .action-icons {
+    gap: 8px;
+  }
+
+  .action-btn {
+    font-size: 14px;
+    padding: 3px 5px;
+  }
+}
+
+/* ============================================
+   PURCHASES HEADER SECTION
+   ============================================ */
+
+.purchases-header {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  padding: 60px 0;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.purchases-page-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #80C157;
+  margin-bottom: 10px;
+}
+
+.purchases-page-subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+  color: #666666;
+  margin-bottom: 0;
+}
+
+/* ============================================
+   PURCHASE STATISTICS SECTION
+   ============================================ */
+
+.purchases-stats {
+  background: #f5f5f5; /* match uploads page background */
+}
+
+.stat-card-purchase {
+  background: var(--white-color); /* match purchases table card background */
+  border-radius: 12px;
+  padding: 18px; /* reduced padding for tighter stat cards */
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 5px solid #80C157;
+}
+
+.stat-card-purchase:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon-purchase {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #ffffff;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #80C157, #81c408);
+}
+
+.stat-icon-purchase.alt-1 {
+  background: linear-gradient(135deg, #fdd280, #f5a623);
+}
+
+.stat-icon-purchase.alt-2 {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.stat-icon-purchase.alt-3 {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.stat-content-purchase {
+  flex: 1;
+}
+
+.stat-label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #666666;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #333333;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.coin-stat {
+  width: 24px;
+  height: 24px;
+}
+
+/* ============================================
+   PURCHASES FILTER SECTION
+   ============================================ */
+
+.purchases-filter-section {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 18px; /* slightly reduced padding */
+  margin-bottom: 18px; /* tightened gap between filter/table and stats */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.filter-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.filter-item {
+  flex: 0 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-item.search-item {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-label {
+  display: block;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  color: #81c408;
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.filter-select {
+  width: 360px;
+  border: 2px solid #fdd280;
+  border-radius: 12px;
+  padding: 14px 16px 14px 16px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.05rem;
+  color: #333333;
+  background-color: #ffffff;
+  /* Remove native arrow and use custom SVG so we can position it */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath fill='%23999' d='M7 8L0.071 0.75 13.929.75z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  /* position the arrow more to the left inside the box */
+  background-position: right 26px center;
+  background-size: 14px 8px;
+  padding-right: 52px; /* make room for the custom arrow */
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  height: 52px;
+}
+
+.filter-select:hover {
+  border-color: #80C157;
+}
+
+/* hide IE/Edge default dropdown arrow */
+.filter-select::-ms-expand {
+  display: none;
+}
+
+/* Option hover styling (note: styling options is browser-dependent) */
+.filter-select option:hover {
+  color: #81c408;
+  background-color: rgba(129,196,8,0.12);
+}
+
+/* Also style option when selected for consistent look */
+.filter-select option:checked {
+  color: #333333;
+  background-color: rgba(128,193,87,0.08);
+}
+
+.filter-select:focus {
+  border-color: #80C157;
+  box-shadow: 0 0 0 0.2rem rgba(128, 193, 87, 0.25);
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #81c408;
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn-search {
+  background: linear-gradient(135deg, #81c408, #80C157);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 52px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-search:hover {
+  transform: translateY(-2px);
+  background-color: #fcbd40 !important; /* golden hover */
+  background-image: none !important;
+  border-color: #fcbd40 !important;
+  color: #fff !important;
+}
+
+.btn-search:active {
+  transform: translateY(0);
+}
+
+.filter-item.search-item {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  flex: 1;
+}
+
+.filter-search {
+  flex: 0 1 auto;
+  width: 360px;
+  border: 2px solid #fdd280;
+  border-radius: 12px;
+  padding: 14px 16px 14px 42px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.05rem;
+  color: #333333;
+  transition: border-color 0.3s ease;
+  height: 52px;
+  position: relative;
+}
+
+.filter-search::placeholder {
+  color: #999999;
+}
+
+.filter-search:hover {
+  border-color: #80C157;
+}
+
+.filter-search:focus {
+  border-color: #80C157;
+  box-shadow: 0 0 0 0.2rem rgba(128, 193, 87, 0.25);
+  outline: none;
+}
+
+/* Custom dropdown styles (copied/adapted from uploads.css) */
+.custom-dropdown {
+  position: relative;
+  width: 360px; /* match keyword box width */
+  max-width: 100%;
+}
+
+.custom-dropdown-button {
+  border: 2px solid #fdd280;
+  border-radius: 12px;
+  padding: 12px 15px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.05rem;
+  color: #000000;
+  background-color: #ffffff !important;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-dropdown-button:after {
+  content: '▼';
+  color: #fdd280;
+  font-size: 0.75rem;
+}
+
+.custom-dropdown-button:hover {
+  border-color: #80C157;
+}
+
+.custom-dropdown-button:focus {
+  border-color: #80C157;
+  box-shadow: 0 0 0 0.2rem rgba(128, 193, 87, 0.25);
+  outline: none;
+}
+
+.custom-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: none;
+  border-radius: 0 0 12px 12px;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-dropdown-menu.active {
+  display: block;
+}
+
+.custom-dropdown-option {
+  padding: 12px 15px;
+  cursor: pointer;
+  color: #000000;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.custom-dropdown-option:hover,
+.custom-dropdown-option:focus {
+  background-color: rgba(129, 196, 8, 0.25);
+  color: #81c408;
+}
+
+.custom-dropdown-option.selected {
+  background-color: rgba(129, 196, 8, 0.15);
+  color: #81c408;
+  font-weight: 600;
+}
+
+.quick-tips-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.tips-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #80C157;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.tip-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tip-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(128, 193, 87, 0.15);
+}
+
+.tip-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(128, 193, 87, 0.1), rgba(129, 196, 8, 0.05));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #80C157;
+  margin: 0 auto 20px;
+}
+
+.tip-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 15px 0;
+}
+
+.tip-text {
+  font-family: 'Open Sans', sans-serif;
+  color: #666666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 992px) {
+  .purchases-page-title {
+    font-size: 2rem;
+  }
+
+  .tips-title {
+    font-size: 2rem;
+  }
+
+  .filter-row {
+    gap: 15px;
+  }
+
+  .filter-item {
+    flex: 0 1 48%;
+  }
+
+  .search-item {
+    flex: 0 1 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .purchases-page-title {
+    font-size: 1.8rem;
+  }
+
+  .tips-title {
+    font-size: 1.8rem;
+  }
+
+  .purchases-header {
+    padding: 40px 0;
+  }
+
+  .stat-card-purchase {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .filter-row {
+    flex-direction: column;
+  }
+
+  .filter-item {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .search-item {
+    flex: 1 1 100%;
+  }
+
+  .purchases-filter-section {
+    padding: 20px;
+  }
+
+  .purchases-table-section {
+    padding: 25px;
+  }
+
+  .purchases-table {
+    width: 100%;
+  }
+
+  .purchases-table thead th {
+    font-size: 12px;
+    padding: 15px 10px;
+  }
+
+  .purchases-table tbody td {
+    font-size: 12px;
+    padding: 15px 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .purchases-page-title {
+    font-size: 1.5rem;
+  }
+
+  .tips-title {
+    font-size: 1.5rem;
+  }
+
+  .purchases-page-subtitle {
+    font-size: 1rem;
+  }
+
+  .stat-card-purchase {
+    padding: 20px;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .purchases-container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .purchases-table-section {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .purchases-table {
+    font-size: 12px;
+  }
+
+  .purchases-table thead th {
+    padding: 12px 8px;
+    font-size: 11px;
+  }
+
+  .purchases-table tbody td {
+    padding: 12px 8px;
+    font-size: 11px;
+  }
+
+  .action-icons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .action-btn {
+    font-size: 12px;
+    padding: 2px 4px;
+  }
+
+  .tip-card {
+    padding: 20px;
+  }
+}
+
+/* Pagination styling to match the provided image and sit inside the white card */
+.purchases-pagination-wrapper {
+  margin-top: 50px;
+}
+.purchases-pagination-wrapper .pagination {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.purchases-pagination-wrapper .page-item {
+  display: flex;
+}
+.purchases-pagination-wrapper .page-item .page-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px; /* smaller fixed width so boxes are smaller */
+  height: 44px; /* smaller fixed height */
+  padding: 0;
+  background: #fff;
+  color: var(--secondary-color);
+  border-radius: 0; /* no curved edges */
+  border: 1px solid rgba(0,0,0,0.04);
+  font-weight: 700;
+  text-decoration: none;
+}
+.purchases-pagination-wrapper .page-item .page-link i,
+.purchases-pagination-wrapper .page-item .page-link span {
+  display: inline-block;
+}
+.purchases-pagination-wrapper .page-item:first-child .page-link,
+.purchases-pagination-wrapper .page-item:last-child .page-link {
+  min-width: 56px;
+  padding: 0 12px;
+}
+.purchases-pagination-wrapper .page-item.active .page-link {
+  background: #fcbd40; /* middle box color */
+  color: #fff;
+  width: 56px;
+  height: 44px;
+  font-size: 18px;
+  border-radius: 0; /* keep square */
+}
+.purchases-pagination-wrapper .page-item .page-link:hover {
+  background: #fff8ef;
+  color: var(--secondary-color);
+}
+.purchases-pagination-wrapper .page-item.disabled .page-link {
+  opacity: 0.6;
+  pointer-events: none;
+}
+

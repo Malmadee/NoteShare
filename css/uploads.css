@@ -1,0 +1,1071 @@
+/* ========================================
+   UPLOADS PAGE STYLESHEET
+   ======================================== */
+
+/* Color Variables */
+:root {
+    --primary-green: #80C157;
+    --secondary-green: #81c408;
+    --accent-orange: #fdd280;
+    --text-dark: #333333;
+    --text-light: #666666;
+    --border-light: #e0e0e0;
+    --bg-light: #f5f5f5;
+    --white: #ffffff;
+}
+
+/* ========================================
+   UPLOADS SECTION STYLING
+   ======================================== */
+
+.uploads-section {
+    background-color: var(--bg-light);
+    min-height: 100vh;
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+.uploads-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary-green);
+    margin-bottom: 10px;
+}
+
+.uploads-subtitle {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+/* ========================================
+   STAT CARDS
+   ======================================== */
+
+.stat-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid var(--primary-green);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Reduce gap between stats section and charts section */
+.row.mb-5:first-of-type {
+    margin-bottom: 1.2rem !important;
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.9rem;
+    color: var(--white);
+    flex-shrink: 0;
+}
+
+.stat-icon.sales-icon {
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+}
+
+.stat-icon.coins-icon {
+    background: linear-gradient(135deg, var(--accent-orange), #f5a623);
+}
+
+.stat-icon.uploads-icon {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.stat-icon.views-icon {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.stat-content h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-number {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+/* ========================================
+   CHART CARDS
+   ======================================== */
+
+.chart-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.chart-card canvas {
+    max-height: 100%;
+    flex: 1 1 auto;
+    width: 100% !important;
+}
+
+/* Force both chart canvases to a matching visual height and center the pie */
+.chart-card.chart-sales canvas,
+.chart-card.chart-earnings canvas {
+    max-height: 280px !important;
+    height: 280px !important;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Ensure Sales card height matches Monthly Earnings exactly */
+.chart-card.chart-sales {
+    /* Allow the sales card to grow and match the earnings card.
+       Increase min-height so both cards share the same visual height. */
+    min-height: 380px !important;
+}
+
+.chart-card.chart-earnings {
+    min-height: 380px !important;
+}
+
+/* ========================================
+   UPLOAD FORM CARD
+   ======================================== */
+
+.upload-form-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.form-title i {
+    font-size: 1.4rem;
+    color: #fcbd40; /* use original golden accent */
+}
+
+/* Form Elements */
+.upload-form .form-label {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.upload-form .form-control {
+    border: 2px solid var(--accent-orange);
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upload-form .form-control:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 0.2rem rgba(128, 193, 87, 0.25);
+    outline: none;
+}
+
+/* Category Select Styling */
+.upload-form .form-select {
+    border: 2px solid var(--accent-orange);
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: #000000;
+    background-color: #ffffff !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23fdd280' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-size: 16px 12px;
+    padding-right: 2.5rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-image 0.3s ease;
+}
+
+.upload-form .form-select:hover {
+    border-color: var(--primary-green);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2380C157' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.upload-form .form-select:focus {
+    border-color: var(--primary-green);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2380C157' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    box-shadow: 0 0 0 0.2rem rgba(128, 193, 87, 0.25);
+    outline: none;
+}
+
+.upload-form .form-select option {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Make dropdown options show a light green background and green text on hover/focus.
+   Note: native select styling can vary by browser/OS; these rules improve behavior
+   where custom option styling is supported. */
+.upload-form .form-select option:hover,
+.upload-form .form-select option:focus {
+    background: linear-gradient(#81c408, #81c408);
+    background-color: rgba(129, 196, 8, 0.25) !important;
+    color: #81c408 !important;
+}
+
+/* Custom Dropdown Styling */
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.custom-dropdown-button {
+    border: 2px solid var(--accent-orange);
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: #000000;
+    background-color: #ffffff !important;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-dropdown-button:after {
+    content: '▼';
+    color: #fdd280;
+    font-size: 0.75rem;
+}
+
+.custom-dropdown-button:hover {
+    border-color: var(--primary-green);
+}
+
+.custom-dropdown-button:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 0.2rem rgba(128, 193, 87, 0.25);
+    outline: none;
+}
+
+.custom-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: none;
+    border-radius: 0 0 12px 12px;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-dropdown-menu.active {
+    display: block;
+}
+
+.custom-dropdown-option {
+    padding: 12px 15px;
+    cursor: pointer;
+    color: #000000;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.custom-dropdown-option:hover,
+.custom-dropdown-option:focus {
+    background-color: rgba(129, 196, 8, 0.25);
+    color: #81c408;
+}
+
+.custom-dropdown-option.selected {
+    background-color: rgba(129, 196, 8, 0.15);
+    color: #81c408;
+    font-weight: 600;
+}
+
+/* Toast notifications (lower-left) */
+.upload-toast-container {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Unified gray toast box with white text for all message types */
+.upload-toast {
+    background: #6b6b6b; /* medium gray */
+    color: #ffffff;
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    min-width: 240px;
+    max-width: 320px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.upload-toast.toast-small {
+    min-width: 160px;
+    max-width: 220px;
+}
+
+.upload-toast.toast-large {
+    min-width: 240px;
+    max-width: 320px;
+}
+
+.upload-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Keep all variants visually consistent (gray box, white text). If you want
+   color accents per type later, we can add subtle left borders or icons. */
+.upload-toast.success { background: #6b6b6b; }
+.upload-toast.error { background: #6b6b6b; }
+.upload-toast.info { background: #6b6b6b; }
+
+.text-danger {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/* File Upload Wrapper */
+.file-upload-wrapper {
+    border: 2px dotted var(--accent-orange); /* dotted border in accent color */
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    /* very light fill of the accent orange to match input boxes */
+    background-color: rgba(253,210,128,0.05);
+    cursor: pointer;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+    position: relative;
+}
+
+/* Keep hover/drag states in the same accent color family (no green override). */
+.file-upload-wrapper:hover {
+    border-color: var(--accent-orange);
+    background-color: rgba(253,210,128,0.08);
+    box-shadow: 0 0 10px rgba(253,210,128,0.10);
+}
+
+.file-upload-wrapper.dragover {
+    border-color: #fbc164; /* slightly stronger accent */
+    background-color: rgba(253,210,128,0.10);
+    box-shadow: 0 0 12px rgba(253,210,128,0.12);
+}
+
+.file-input {
+    display: none;
+}
+
+.file-upload-hint {
+    background: transparent; /* let wrapper show the fill */
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.file-upload-hint p {
+    background: transparent;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 10px 0 5px 0;
+    font-size: 0.95rem;
+}
+
+/* icon inside the select/upload box */
+.file-upload-hint i {
+    font-size: 2.5rem;
+    color: #fcbd40; /* gold icon inside select file box */
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* File Preview */
+.file-preview {
+    background: var(--bg-light);
+    border-radius: 8px;
+    padding: 15px;
+    display: none;
+}
+
+.file-preview.active {
+    display: block;
+}
+
+.file-preview-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.file-preview-icon {
+    font-size: 2rem;
+    min-width: 40px;
+    text-align: center;
+    display: none;
+}
+
+/* color the file-preview icon when a file is selected */
+.file-preview-icon i,
+.file-preview-icon svg {
+    color: #fcbd40;
+}
+
+.file-preview-info {
+    flex: 1;
+}
+
+.file-preview-name {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.file-preview-size {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.file-preview-remove {
+    background: #dc3545;
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.file-preview-remove:hover {
+    background: #c82333;
+}
+
+/* Upload Button */
+.btn-upload {
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    background-color: var(--primary-green); /* fallback */
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    padding: 15px 30px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-upload:hover {
+    /* change to solid accent color on hover per request, avoid background-image flicker */
+    background-image: none !important;
+    background-color: #fcbd40 !important; /* original golden accent */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(252, 173, 48, 0.28);
+    color: var(--white);
+}
+
+.btn-upload:active {
+    transform: translateY(0);
+}
+
+.btn-upload i {
+    margin-right: 8px;
+}
+
+/* ========================================
+   SIDEBAR CARDS
+   ======================================== */
+
+.col-lg-4 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.sidebar-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.sidebar-title i {
+    color: #fcbd40;
+}
+
+/* Ensure form title also has the same gap */
+.form-title {
+    gap: 16px;
+}
+
+/* Recent Uploads List */
+.recent-uploads-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.recent-upload-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: var(--bg-light);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.recent-upload-item:hover {
+    background: linear-gradient(135deg, rgba(128, 193, 87, 0.1), rgba(252, 189, 64, 0.05));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.item-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--white);
+    flex-shrink: 0;
+}
+
+.item-icon.pdf-icon {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+}
+
+.item-icon.video-icon {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.item-icon.doc-icon {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+/* Ensure icons keep their original colors on parent hover */
+.recent-upload-item:hover .item-icon.pdf-icon {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+}
+
+.recent-upload-item:hover .item-icon.video-icon {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.recent-upload-item:hover .item-icon.doc-icon {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-info h5 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0 0 2px 0;
+    font-size: 0.88rem; /* slightly smaller title for recent uploads */
+    line-height: 1.2;
+}
+
+/* Also target titles inserted without .item-info wrapper */
+.recent-upload-item h5 {
+    font-size: 0.88rem;
+    margin: 0 0 2px 0;
+    font-weight: 600;
+}
+
+.item-info small {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    display: block;
+    line-height: 1;
+    margin: 0;
+}
+
+.item-price {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    color: #555555;
+    margin: 8px 0 0 0;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.item-price img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.item-actions {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.action-btn.view-btn,
+.action-btn.edit-btn {
+    display: flex !important;
+    background: rgba(52, 152, 219, 0.15);
+    color: #3498db;
+}
+
+.action-btn.view-btn:hover {
+    background: #3498db;
+    color: white;
+}
+
+.action-btn.edit-btn {
+    display: none;
+}
+
+.action-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.action-btn.delete-btn {
+    background: rgba(220, 53, 69, 0.15);
+    color: #dc3545;
+}
+
+.action-btn.delete-btn:hover {
+    background: #dc3545;
+    color: var(--white);
+}
+
+/* Sidebar CTA */
+.sidebar-cta {
+    text-align: center;
+}
+
+.btn-outline-secondary {
+    color: #81c408;
+    border: 2px solid #fcbd40;
+    background: rgba(252, 189, 64, 0.05);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+    background: #fcbd40;
+    border-color: #fcbd40;
+    color: var(--white);
+}
+
+/* Tips List */
+.tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tips-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-light);
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.tips-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.tips-list strong {
+    color: inherit;
+    font-weight: normal;
+}
+
+/* ========================================
+   INPUT GROUP STYLING
+   ======================================== */
+
+.input-group-text {
+    background: var(--bg-light);
+    border-radius: 0 8px 8px 0;
+}
+
+/* Give both the input and the coin badge an orange border by default so they read
+   as a single control. The input's right border is removed to avoid a double border. */
+.input-group .form-control,
+.input-group .input-group-text {
+    border: 2px solid var(--accent-orange);
+}
+
+.input-group .form-control {
+    border-radius: 8px 0 0 8px;
+    border-right: none;
+}
+
+.input-group .input-group-text {
+    border-left: none;
+}
+
+/* When the input is focused, make both elements show the primary green focus state. */
+.input-group .form-control:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 0.2rem rgba(128, 193, 87, 0.25);
+    outline: none;
+}
+
+.input-group .form-control:focus + .input-group-text,
+.input-group .form-control:focus ~ .input-group-text {
+    border-color: var(--primary-green);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    .uploads-title {
+        font-size: 2rem;
+    }
+
+    .uploads-subtitle {
+        font-size: 1rem;
+    }
+
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .upload-form-card {
+        padding: 25px;
+        margin-bottom: 30px;
+    }
+
+    .form-title {
+        font-size: 1.3rem;
+    }
+
+    .file-upload-hint i {
+        font-size: 2rem;
+    }
+
+    .file-preview-item {
+        flex-wrap: wrap;
+    }
+
+    .recent-upload-item {
+        flex-wrap: wrap;
+    }
+
+    .item-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .chart-card {
+        padding: 20px;
+    }
+
+    .sidebar-card {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .uploads-title {
+        font-size: 1.5rem;
+    }
+
+    .stat-card {
+        padding: 15px 20px;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .upload-form-card {
+        padding: 15px;
+    }
+
+    .form-title {
+        font-size: 1.1rem;
+    }
+
+    .file-upload-wrapper {
+        padding: 30px 15px;
+    }
+
+    .chart-card {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .sidebar-card {
+        padding: 20px;
+        margin-top: 20px;
+    }
+}
+
+/* ========================================
+   SCROLLBAR STYLING (Chrome, Safari, Edge)
+   ======================================== */
+
+.recent-uploads-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-uploads-list::-webkit-scrollbar-track {
+    background: var(--bg-light);
+    border-radius: 10px;
+}
+
+.recent-uploads-list::-webkit-scrollbar-thumb {
+    background: var(--primary-green);
+    border-radius: 10px;
+}
+
+.recent-uploads-list::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-green);
+}
+
+/* ========================================
+   ALL UPLOADS MODAL STYLING
+   ======================================== */
+
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease;
+}
+
+/* Center modal perfectly on screen */
+.modal-dialog {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 40px;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    color: var(--white);
+    border: none;
+    border-radius: 12px 12px 0 0;
+    padding: 25px;
+}
+
+.modal-header .modal-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal-header .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+.modal-body {
+    padding: 30px;
+    background: var(--bg-light);
+    border-radius: 0 0 12px 12px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.all-uploads-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 0;
+}
+
+.all-uploads-container .recent-upload-item {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+}
+
+.all-uploads-container .recent-upload-item:hover {
+    background: var(--white);
+    border-color: var(--secondary-green);
+    box-shadow: 0 4px 12px rgba(128, 193, 87, 0.15);
+}
+
+.all-uploads-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.all-uploads-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+.all-uploads-container::-webkit-scrollbar-thumb {
+    background: var(--primary-green);
+    border-radius: 10px;
+}
+
+.all-uploads-container::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-green);
+}
+
+/* Make titles inside the All Uploads modal match the smaller recent-upload title */
+.all-uploads-container .fw-bold {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Confirm modal theming (gray background, white text) */
+.modal-content.confirm-modal-content {
+    background-color: #666666 !important; /* lighter gray */
+    color: #ffffff !important;
+    border: none;
+    border-radius: 8px;
+}
+.modal-content.confirm-modal-content .modal-body { background: transparent !important; }
+.confirm-modal-body p { color: #ffffff; }
+.confirm-modal-content .btn-light {
+    background: rgba(255,255,255,0.06);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Prevent layout shift on modal open/close */
+/* Prevent layout shift on modal open/close */
+body.modal-open {
+    overflow: hidden !important;
+}
+
+/* Allow Bootstrap's native scrollbar compensation */
+.modal {
+    overflow-y: auto;
+}
+.confirm-modal-content .btn-light:hover {
+    background: rgba(255,255,255,0.12);
+}
+.confirm-modal-content .btn-primary {
+    background: #ffffff;
+    color: #222222;
+    border: none;
+}
+
+/* Layout shift compensation removed — Bootstrap handles this natively via .modal-open class */
+/* Do not re-apply padding here; it causes double-shifting jank */

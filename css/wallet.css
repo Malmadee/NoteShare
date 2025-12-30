@@ -1,0 +1,473 @@
+/* ========================================
+   WALLET & COIN PURCHASE MODAL STYLES
+   ======================================== */
+
+:root {
+  --primary-green: #80C157;
+  --secondary-green: #81c408;
+  --accent-gold: #fcbd40;
+  --white: #ffffff;
+  --dark: #1e1e1e;
+  --light-bg: #f5f5f5;
+  --border-light: #e0e0e0;
+}
+
+/* Wallet Modal Overlay - Backdrop */
+.wallet-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1040;
+  animation: fadeIn 0.3s ease;
+  align-items: center;
+  justify-content: center;
+}
+
+.wallet-modal-overlay.active {
+  display: flex;
+}
+
+/* Wallet Modal Container - Centered popup */
+.wallet-modal-content {
+  background: var(--white);
+  border-radius: 16px;
+  width: 95%;
+  max-width: 500px;
+  height: auto;
+  overflow-y: visible;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modal Header */
+.wallet-modal-header {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  color: var(--white);
+  padding: 14px 18px;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.wallet-modal-header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wallet-modal-header .coin-icon-header {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.wallet-modal-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.wallet-modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+/* Modal Body */
+.wallet-modal-body {
+  padding: 14px 16px;
+  flex: 1;
+  overflow-y: visible;
+}
+
+/* Balance Card */
+.wallet-balance-card {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  color: var(--white);
+  padding: 0;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(128, 193, 87, 0.2);
+  display: flex;
+  overflow: hidden;
+}
+
+/* Split balance: left (label) and right (amount) */
+.wallet-balance-card.split .balance-left,
+.wallet-balance-card.split .balance-right {
+  width: 50%;
+  padding: 12px 14px;
+  box-sizing: border-box;
+}
+
+.wallet-balance-card.split .balance-left {
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wallet-balance-card.split .balance-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wallet-balance-label {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  margin: 0;
+  letter-spacing: 0.3px;
+  color: rgba(255,255,255,0.95);
+  font-weight: 600;
+}
+
+.wallet-balance-amount {
+  font-size: 2.0rem;
+  font-weight: 800;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.balance-coin-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.package-coin-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Section Title */
+.wallet-section-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--border-light);
+}
+
+/* Purchase Options */
+.wallet-purchase-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.coin-package-btn {
+  background: var(--light-bg);
+  border: 2px solid var(--border-light);
+  border-radius: 8px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 0.85rem;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.coin-package-btn:hover {
+  border-color: var(--accent-gold);
+  background: rgba(252, 189, 64, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(252, 189, 64, 0.2);
+}
+
+.coin-package-btn.active {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(252, 189, 64, 0.3);
+}
+
+.coin-package-left {
+  /* Slightly narrower left column so the divider stays visible
+     and prices can be moved left */
+  flex: 0 0 60%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 8px 12px;
+  color: var(--dark);
+}
+
+.coin-package-divider {
+  /* Position as an absolute centered divider inside the package button
+     so it always sits in the middle of the box horizontally. */
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  bottom: 10%;
+  width: 2px;
+  /* lighter divider color for a subtler look */
+  background: rgba(0,0,0,0.06);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.coin-package-right {
+  /* Narrower right column; keep left alignment but move price slightly right */
+  flex: 0 0 40%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px 12px;
+  /* small nudge to the right so prices sit a bit further from the divider */
+  padding-left: 20px;
+  color: var(--dark);
+}
+
+.coin-package-btn.active .coin-package-left {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.coin-package-btn.active .coin-package-right {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Divider handled by the internal element `.coin-package-divider` */
+/* Removed the pseudo-element to avoid duplicate lines. */
+
+/* Custom Amount Input */
+.custom-amount-section {
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  background: var(--light-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+}
+
+.custom-amount-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.custom-amount-input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 2px solid var(--border-light);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.custom-amount-input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 3px rgba(128, 193, 87, 0.1);
+}
+
+/* Price Display */
+.wallet-price-display {
+  background: rgba(129, 196, 8, 0.08);
+  padding: 6px 8px;
+  border-radius: 6px;
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(129, 196, 8, 0.2);
+  font-size: 0.75rem;
+}
+
+.wallet-price-label {
+  font-size: 0.75rem;
+  color: var(--dark);
+  font-weight: 500;
+}
+
+.wallet-price-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-green);
+}
+
+/* Purchase Button */
+.wallet-purchase-btn {
+  width: 100%;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, var(--accent-gold), #f5a623);
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 12px rgba(252, 189, 64, 0.2);
+  margin-bottom: 8px;
+}
+
+.wallet-purchase-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(252, 189, 64, 0.3);
+  background: linear-gradient(135deg, #f5a623, var(--accent-gold));
+}
+
+.wallet-purchase-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(252, 189, 64, 0.2);
+}
+
+.wallet-purchase-btn i {
+  font-size: 0.9rem;
+}
+
+/* Info Text */
+.wallet-info-text {
+  font-size: 0.7rem;
+  color: #999;
+  text-align: center;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+/* Package Details */
+.wallet-package-details {
+  background: var(--light-bg);
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border-light);
+}
+
+.wallet-package-details h4 {
+  margin: 0 0 4px 0;
+  font-size: 0.85rem;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wallet-package-details .coin-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.wallet-package-price-detail {
+  font-size: 1rem;
+  color: var(--primary-green);
+  font-weight: 700;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .wallet-modal-content {
+    width: 95%;
+    max-width: 450px;
+  }
+
+  .wallet-modal-body {
+    padding: 20px 16px;
+  }
+
+  .wallet-balance-amount {
+    font-size: 2rem;
+  }
+
+  .wallet-purchase-options {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .wallet-modal-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .wallet-section-title {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wallet-modal-content {
+    width: 95%;
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .wallet-modal-body {
+    padding: 16px;
+  }
+
+  .wallet-balance-amount {
+    font-size: 1.8rem;
+  }
+
+  .wallet-purchase-options {
+    grid-template-columns: 1fr;
+  }
+
+  .coin-package-btn {
+    padding: 12px;
+  }
+}
