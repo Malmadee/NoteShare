@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>NoteShare | Support</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Navbar Stylesheet -->
+        <link href="assets/css/navBar.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="assets/css/support.css" rel="stylesheet">
+
+        <!-- Toast Notifications Stylesheet -->
+        <link href="assets/css/uploads.css" rel="stylesheet">
+
+        <!-- Footer Stylesheet (load last to avoid being overridden) -->
+        <link href="assets/css/footer.css" rel="stylesheet">
+        <!-- Cart Popup Stylesheet -->
+        <link rel="stylesheet" href="assets/css/cart.css">
+        
+        <!-- Wallet & Coin Purchase Stylesheet -->
+        <link rel="stylesheet" href="assets/css/wallet.css">
+        
+        <!-- Toast Notifications Stylesheet -->
+        <style>
+            @keyframes slideIn {
+                from {
+                    transform: translateX(-100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(-100%);
+                    opacity: 0;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Navbar Start -->
+        <div class="container-fluid fixed-top">
+            <div class="container topbar bg-primary d-none d-lg-block">
+                <div class="d-flex justify-content-between">
+                    <div class="top-info ps-2">
+                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Mihintale, Anuradhapura</a></small>
+                        <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">webnoteshare@gmail.com</a></small>
+                    </div>
+                    <div class="top-link pe-2">
+                        <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
+                        <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
+                        <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
+                    </div>
+                </div>
+            </div>
+            <div class="container px-0">
+                <nav class="navbar navbar-light bg-white navbar-expand-xl">
+                    <a href="home.html" class="navbar-brand">
+                        <img src="assets/images/logo.png" alt="NoteShare Logo" class="logo-img">
+                        <h1 style="font-weight:700; color:#80C157; font-family:'Raleway', 'Open Sans', sans-serif; font-size:2.5rem; margin:0;">NoteShare</h1>
+                    </a>
+                    <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars text-primary"></span>
+                    </button>
+                    <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                        <div class="navbar-nav mx-auto">
+                            <a href="home.html" class="nav-item nav-link">Home</a>
+                            <a href="browse.html" class="nav-item nav-link">Browse</a>
+                            <a href="uploads.html" class="nav-item nav-link">My Uploads</a>
+                            <a href="purchases.html" class="nav-item nav-link">My Purchases</a>
+                            <a href="support.html" class="nav-item nav-link active">Support</a>
+                        </div>
+                        
+                    <div class="d-flex m-3 me-0 align-items-center navbar-icons">
+                        <!-- Coin Icon (Wallet) -->
+                        <button class="wallet-btn" style="background: none; border: none; padding: 0; cursor: pointer;" title="Open Wallet">
+                            <img src="assets/images/coin.png" alt="Wallet" class="wallet-img">
+                        </button>                            <!-- Cart Icon -->
+                            <a href="#" class="position-relative cart-icon" id="cartIconBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                                <i class="fa fa-shopping-bag"></i>
+                            </a>
+
+                            <!-- Logout Button -->
+                            <button class="btn white-btn logout-btn" onclick="location.href='authentication/authentication.php'">Logout</button>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Navbar End -->
+        
+        <!-- Contact Start -->
+        <div class="container-fluid contact py-5">
+            <div class="container py-5">
+                <div class="p-5 bg-light rounded">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="text-center mx-auto" style="max-width: 700px;">
+                                <h1 class="text-primary" style="font-weight: 700;">Get in touch</h1>
+                                <p class="mb-4">We value your thoughts and are always happy to help. If you're experiencing an issue, have suggestions for improvement, or want to learn more about NoteShare, feel free to reach out. Our team will respond promptly.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <iframe class="rounded w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.4146840611725!2d80.50076197462191!3d8.36080339167623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afc8a63370239cb%3A0xfde408ba97b0d4d3!2sRajarata%20University%20of%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1763230151500!5m2!1sen!2slk" style="height: 400px; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="col-lg-7 d-flex">
+                            <form id="support-form" action="" class="w-100 d-flex flex-column">
+                                <input id="support-name" name="name" type="text" class="w-100 form-control border-0 py-3 mb-4" placeholder="Your Name" required>
+                                <input id="support-email" name="email" type="email" class="w-100 form-control border-0 py-3 mb-4" placeholder="Enter Your Email" required>
+                                <textarea id="support-message" name="message" class="w-100 form-control border-0 mb-4 flex-grow-1" rows="5" cols="10" placeholder="Your Message" required></textarea>
+                                <button id="support-submit" class="w-100 btn form-control border-secondary py-3 bg-white text-primary" type="submit">Submit</button>
+                            </form>
+                        </div>
+                        <div class="col-lg-5 d-flex flex-column">
+                            <div class="d-flex p-4 rounded mb-4 bg-white">
+                                <i class="fas fa-map-marker-alt fa-2x text-primary me-4"></i>
+                                <div>
+                                    <h4>Address</h4>
+                                    <p class="mb-2">Mihintale, Anuradhapura</p>
+                                </div>
+                            </div>
+                            <div class="d-flex p-4 rounded mb-4 bg-white">
+                                <i class="fas fa-envelope fa-2x text-primary me-4"></i>
+                                <div>
+                                    <h4>Mail Us</h4>
+                                    <p class="mb-2">webnoteshare@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="d-flex p-4 rounded bg-white">
+                                <i class="fa fa-phone-alt fa-2x text-primary me-4"></i>
+                                <div>
+                                    <h4>Telephone</h4>
+                                    <p class="mb-2">(+94) 070 157 6744</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+
+    <!-- Footer Section -->
+    <footer id="footer" class="s-footer">
+        <div class="footer-inner">
+            <div class="s-footer__top">
+                <div class="column footer-block footer-newsletter">
+                    <h5>
+                    Subscribe to our mailing list for <br>
+                    updates, news, and exclusive offers.
+                    </h5>
+
+                    <div class="subscribe-form">
+                        <form id="mc-form" class="mc-form">
+                            <div class="mc-input-wrap">
+                                <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Your Email Address" required>
+                                <input type="submit" name="subscribe" value="Subscribe" class="btn btn--primary">
+                            </div>
+                            <div class="mc-status"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="s-footer__main">
+                <div class="footer-block s-footer__main-start">
+                    <div class="s-footer__brand">
+                        <div class="s-footer__logo">
+                            <img src="assets/images/logo.png" alt="NoteShare Logo">
+                        </div>
+                        <h1>NoteShare</h1>
+                    </div>
+                </div>
+
+                <div class="footer-info-inline">
+                    <div class="footer-block">
+                        <h6>Location</h6>
+                        <p>Mihintale, Anuradhapura<br>SL 50300</p>
+                    </div>
+                    <div class="footer-block">
+                        <h6>Contacts</h6>
+                        <ul class="link-list">
+                            <li><a href="mailto:webnoteshare@gmail.com">webnoteshare@gmail.com</a></li>
+                            <li><a href="tel:+94701576744">(+94) 070-157-6744</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-block">
+                        <h6>Conditions</h6>
+                        <ul class="opening-hours">
+                            <li><span class="opening-hours__days">Privacy Policy</span></li>
+                            <li><span class="opening-hours__days">Terms of Use</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/navBar.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script>
+        console.log('[support.html] inline script: before loading support.js');
+    </script>
+    <script src="/NoteShare/assets/js/support.js" defer onload="console.log('[support.html] support.js loaded')" onerror="console.error('[support.html] support.js failed to load')"></script>
+
+    <!-- SVG Icons for Cart -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <defs>
+            <symbol id="cart" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M8.5 19a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 8.5 19ZM19 16H7a1 1 0 0 1 0-2h8.491a3.013 3.013 0 0 0 2.885-2.176l1.585-5.55A1 1 0 0 0 19 5H6.74a3.007 3.007 0 0 0-2.82-2H3a1 1 0 0 0 0 2h.921a1.005 1.005 0 0 1 .962.725l.155.545v.005l1.641 5.742A3 3 0 0 0 7 18h12a1 1 0 0 0 0-2Zm-1.326-9l-1.22 4.274a1.005 1.005 0 0 1-.963.726H8.754l-.255-.892L7.326 7ZM16.5 19a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5Z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- Cart Popup (Offcanvas) -->
+    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasCartLabel">Your Cart</h5>
+            <button type="button" class="btn-close-custom" data-bs-dismiss="offcanvas" aria-label="Close">
+                <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
+                    <path d="M3 3 L13 13 M13 3 L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-0">Introduction to HTML</h6>
+                        <button type="button" class="remove-pill" aria-label="Remove Introduction to HTML">Remove</button>
+                    </div>
+                    <span class="price-pill rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">100</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-0">Linear Programming</h6>
+                        <button type="button" class="remove-pill" aria-label="Remove Linear Programming">Remove</button>
+                    </div>
+                    <span class="price-pill rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">150</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-0">Job Design</h6>
+                        <button type="button" class="remove-pill" aria-label="Remove Job Design">Remove</button>
+                    </div>
+                    <span class="price-pill rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">200</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <strong>Total:</strong>
+                    <span class="price-pill price-pill--clean rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">450</span>
+                </li>
+            </ul>
+            <button class="w-100 btn btn-primary btn-lg" type="button">Check Out</button>
+        </div>
+    </div>
+
+    <script src="assets/js/wallet.js"></script>
+    <!-- Wallet & Coin Purchase Modal -->
+    <div id="walletModalOverlay" class="wallet-modal-overlay">
+      <div class="wallet-modal-content">
+        <!-- Modal Header -->
+        <div class="wallet-modal-header">
+          <h2>
+            My Wallet
+          </h2>
+          <button class="wallet-modal-close" aria-label="Close wallet">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="wallet-modal-body">
+          <!-- Balance Card (split) -->
+          <div class="wallet-balance-card split">
+            <div class="balance-left">
+              <div class="wallet-balance-label">Current Balance</div>
+            </div>
+            <div class="balance-right">
+              <div class="wallet-balance-amount"><img src="assets/images/coin.gif" alt="coin" class="balance-coin-icon"> <span id="walletBalance">-</span></div>
+            </div>
+          </div>
+
+          <!-- Purchase Coins Section -->
+          <div class="wallet-section-title">Buy Coins</div>
+
+          <!-- Preset Coin Packages -->
+          <div class="wallet-purchase-options">
+            <button class="coin-package-btn" data-coins="50">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 50</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 100</div>
+            </button>
+
+            <button class="coin-package-btn" data-coins="100">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 100</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 200</div>
+            </button>
+
+            <button class="coin-package-btn" data-coins="200">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 200</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 400</div>
+            </button>
+
+            <button class="coin-package-btn" data-coins="500">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 500</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 1000</div>
+            </button>
+          </div>
+
+          <!-- Selected Package Details -->
+          <div id="walletPackageDetails" class="wallet-package-details" style="display: none;">
+            <!-- Populated by JavaScript -->
+          </div>
+
+          <!-- Custom Amount Section -->
+          <div class="custom-amount-section">
+            <label for="customCoinAmount" class="custom-amount-label">Or Enter Custom Amount</label>
+            <input type="number" id="customCoinAmount" class="custom-amount-input" placeholder="Enter number of coins" min="1" max="10000">
+            <div id="walletCustomPrice" class="wallet-price-display" style="display: none;"></div>
+          </div>
+
+          <!-- Purchase Button -->
+          <button class="wallet-purchase-btn"><i class="fas fa-credit-card"></i> Proceed to Payment</button>
+
+          <!-- Info Text -->
+          <p class="wallet-info-text">💳 Secure payment via Mastercard and Visa</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscribe Form Script -->
+    <script src="assets/js/subscribe.js"></script>
+
+    </body>
+
+</html>

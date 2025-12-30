@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Edukate - Online Education Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="assets/images/logo.png" rel="icon" type="image/png">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <!-- (removed) owlcarousel stylesheet - not required by this page -->
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="assets/css/course.css" rel="stylesheet">
+</head>
+
+<body>
+    
+    <!-- Courses Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row" id="courses-container">
+                <!-- Popular courses will be loaded here dynamically -->
+            </div>
+        </div>
+    </div>
+    <!-- Courses End -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <!-- removed easing, waypoints, counterup libraries to keep minimal for this page -->
+    <!-- (removed) owlcarousel script - calls guarded in main.js -->
+
+    <!-- Template Javascript -->
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/course.js"></script>
+    
+    <script>
+        // Load and display the top 9 most popular materials
+        async function loadPopularCourses() {
+            try {
+                const response = await fetch('api/get-most-popular.php');
+                const data = await response.json();
+                
+                if (data.success && data.materials.length > 0) {
+                    const container = document.getElementById('courses-container');
+                    container.innerHTML = '';
+                    
+                    data.materials.forEach((material) => {
+                        const courseCard = document.createElement('div');
+                        courseCard.className = 'col-lg-4 col-md-6 pb-4';
+                        
+                        // Get initials for placeholder
+                        const creatorInitials = material.creator
+                            .split(' ')
+                            .map(n => n[0])
+                            .join('')
+                            .toUpperCase()
+                            .substring(0, 2);
+                        
+                        courseCard.innerHTML = `
+                            <a class="courses-list-item position-relative d-block overflow-hidden mb-2" href="viewer.html?id=${material.id}">
+                                <img class="img-fluid" src="${material.thumbnail_path}" alt="${material.title}" onerror="this.src='assets/images/placeholder-thumbnail.jpg'">
+                                <div class="courses-text">
+                                    <h4 class="text-center text-white px-3">${material.title}</h4>
+                                    <div class="border-top w-100 mt-3">
+                                        <div class="d-flex justify-content-between p-4">
+                                            <span class="text-white"><i class="fa fa-user mr-2"></i>${material.creator}</span>
+                                            <span class="text-white"><i class="fa fa-shopping-cart mr-2"></i>${material.purchases_count}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        `;
+                        
+                        container.appendChild(courseCard);
+                    });
+                } else {
+                    document.getElementById('courses-container').innerHTML = '<p class="col-12 text-center text-white">No courses available yet.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading popular courses:', error);
+                document.getElementById('courses-container').innerHTML = '<p class="col-12 text-center text-danger">Error loading courses</p>';
+            }
+        }
+        
+        // Load courses when page loads
+        document.addEventListener('DOMContentLoaded', loadPopularCourses);
+    </script>
+</body>
+
+</html>

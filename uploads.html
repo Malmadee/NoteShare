@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>NoteShare | My Uploads</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Navbar Stylesheet -->
+    <link href="assets/css/navBar.css?v=20251205" rel="stylesheet">
+
+    <!-- Uploads Stylesheet -->
+    <link href="assets/css/uploads.css?v=20251205" rel="stylesheet">
+
+    <!-- Footer Stylesheet -->
+    <link href="assets/css/footer.css?v=20251205" rel="stylesheet">
+
+    <!-- Cart Popup Stylesheet -->
+    <link rel="stylesheet" href="assets/css/cart.css?v=20251205">
+
+    <!-- Wallet & Coin Purchase Stylesheet -->
+    <link rel="stylesheet" href="assets/css/wallet.css?v=20251205">
+
+    <!-- Toast Notifications and Other Styles -->
+    <style>
+        /* Toast Animations */
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        /* Position modal higher and reduce height to fit better */
+        #allUploadsModal .modal-dialog {
+            max-height: 70vh !important;
+            display: flex !important;
+            flex-direction: column !important;
+            margin-top: 0px !important;
+            align-self: flex-start !important;
+        }
+        
+        #allUploadsModal .modal-content {
+            display: flex !important;
+            flex-direction: column !important;
+            max-height: 70vh !important;
+        }
+        
+        #allUploadsModal .modal-body {
+            display: flex !important;
+            flex-direction: column !important;
+            flex: 1 !important;
+            overflow: hidden !important;
+        }
+        
+        /* Remove any .modal scrollbar styling to avoid conflicts */
+        .modal::-webkit-scrollbar {
+            display: none !important;
+        }
+        
+        /* Only .all-uploads-container should have visible scrollbar */
+        .all-uploads-container::-webkit-scrollbar {
+            width: 6px !important;
+        }
+        
+        .all-uploads-container::-webkit-scrollbar-track {
+            background: transparent !important;
+            border-radius: 10px !important;
+        }
+        
+        .all-uploads-container::-webkit-scrollbar-thumb {
+            background: #80c157 !important;
+            border-radius: 10px !important;
+        }
+        
+        .all-uploads-container::-webkit-scrollbar-thumb:hover {
+            background: #81c408 !important;
+        }
+        
+        /* Make container fill available space */
+        #allUploadsModal .all-uploads-container {
+            max-height: none !important;
+            flex: 1 !important;
+            overflow-y: auto !important;
+        }
+        
+        /* Optimize spinner performance - remove all lag and stuttering */
+        .site-spinner-overlay {
+            position: fixed !important;
+            inset: 0 !important;
+            background: rgba(255, 255, 255, 0.96) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            z-index: 200000 !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transition: none !important;
+            will-change: opacity, visibility !important;
+            pointer-events: none !important;
+            backface-visibility: hidden !important;
+            -webkit-font-smoothing: antialiased !important;
+        }
+        
+        .site-spinner-overlay.visible {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+        
+        .site-spinner {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 10px !important;
+            color: #80c157 !important;
+            will-change: auto !important;
+            backface-visibility: hidden !important;
+        }
+        
+        .spinner-ring {
+            width: 56px !important;
+            height: 56px !important;
+            border-radius: 50% !important;
+            border: 6px solid rgba(0, 0, 0, 0.08) !important;
+            border-top-color: #80c157 !important;
+            animation: spin 1s linear infinite !important;
+            will-change: transform !important;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .spinner-text {
+            display: none !important;
+        }
+        
+        .back-to-top {
+            position: fixed !important;
+            right: 18px !important;
+            bottom: 22px !important;
+            width: 48px !important;
+            height: 48px !important;
+            border-radius: 50% !important;
+            background: #80c157 !important;
+            color: #fff !important;
+            border: none !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12) !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: translateY(8px) !important;
+            transition: opacity 0.2s, transform 0.2s !important;
+            z-index: 200000 !important;
+            cursor: pointer !important;
+            font-size: 20px !important;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-4px) !important;
+        }
+    </style>
+
+    <!-- Chart Library (Chart.js) - load local copy first, then CDN as fallback to avoid Tracking Prevention blocking -->
+    <script>
+        (function(){
+            var localPath = 'assets/js/chart.min.js';
+            var loadScript = function(src, onload, onerror){
+                var s = document.createElement('script');
+                s.src = src;
+                s.async = false;
+                if (onload) s.onload = onload;
+                if (onerror) s.onerror = onerror;
+                document.head.appendChild(s);
+            };
+
+            // Try local copy first
+            var triedCDN = false;
+            loadScript(localPath, function(){
+                console.log('Chart.js loaded from local copy:', localPath);
+                // Reinitialize charts after loading
+                if (typeof initializeCharts === 'function') {
+                    setTimeout(function() { initializeCharts(); }, 100);
+                }
+            }, function(){
+                // If local fails, load CDN
+                if (triedCDN) return;
+                triedCDN = true;
+                var cdn = 'https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js';
+                loadScript(cdn, function(){
+                    console.log('Chart.js loaded from CDN');
+                    // Reinitialize charts after loading
+                    if (typeof initializeCharts === 'function') {
+                        setTimeout(function() { initializeCharts(); }, 100);
+                    }
+                }, function(){
+                    console.warn('Chart.js failed to load from local and CDN');
+                });
+            });
+        })();
+    </script>
+</head>
+
+<body>
+
+    <!-- Navbar Start -->
+    <div class="container-fluid fixed-top">
+        <div class="container topbar bg-primary d-none d-lg-block">
+            <div class="d-flex justify-content-between">
+                <div class="top-info ps-2">
+                    <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Mihintale, Anuradhapura</a></small>
+                    <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">webnoteshare@gmail.com</a></small>
+                </div>
+                <div class="top-link pe-2">
+                    <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
+                    <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
+                    <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
+                </div>
+            </div>
+        </div>
+        <div class="container px-0">
+            <nav class="navbar navbar-light bg-white navbar-expand-xl">
+                <a href="home.html" class="navbar-brand">
+                    <img src="assets/images/logo.png" alt="NoteShare Logo" class="logo-img">
+                    <h1 style="font-weight:700; color:#80C157; font-family:'Raleway', 'Open Sans', sans-serif; font-size:2.5rem; margin:0;">NoteShare</h1>
+                </a>
+                <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars text-primary"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto">
+                        <a href="home.html" class="nav-item nav-link">Home</a>
+                        <a href="browse.html" class="nav-item nav-link">Browse</a>
+                        <a href="uploads.html" class="nav-item nav-link active">My Uploads</a>
+                        <a href="purchases.html" class="nav-item nav-link">My Purchases</a>
+                        <a href="support.html" class="nav-item nav-link">Support</a>
+                    </div>
+                    
+                       <div class="d-flex m-3 me-0 align-items-center navbar-icons">
+                           <!-- Coin Icon (Wallet) -->
+                           <button class="wallet-btn" style="background: none; border: none; padding: 0; cursor: pointer;" title="Open Wallet">
+                               <img src="assets/images/coin.png" alt="Wallet" class="wallet-img">
+                           </button>
+
+                           <!-- Cart Icon -->
+                           <a href="#" class="position-relative cart-icon" id="cartIconBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                               <i class="fa fa-shopping-bag"></i>
+                           </a>
+
+                           <!-- Logout Button -->
+                           <button class="btn white-btn logout-btn" onclick="handleLogout()">Logout</button>
+                       </div>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Dashboard Start -->
+    <div class="container-fluid uploads-section py-5" style="margin-top: 120px;">
+        <div class="container">
+            <!-- Page Title removed as requested -->
+
+            <!-- Stats Cards -->
+            <div class="row mb-5 g-4">
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <div class="stat-icon uploads-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Uploads</h3>
+                            <p class="stat-number"><span id="statTotalUploads">0</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <div class="stat-icon sales-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Sales</h3>
+                            <p class="stat-number"><span id="statTotalSales">0</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="stat-card">
+                        <div class="stat-icon coins-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>TOTAL EARNINGS</h3>
+                            <p class="stat-number"><span id="statTotalEarnings">0</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="row mb-5 g-4">
+                <div class="col-lg-6">
+                    <div class="chart-card chart-sales">
+                        <h4 class="chart-title">Sales by Category</h4>
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="chart-card chart-earnings">
+                        <h4 class="chart-title">Monthly Earnings</h4>
+                        <canvas id="earningsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content: Two Tabs -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Upload Form Section -->
+                    <div class="upload-form-card">
+                        <h3 class="form-title">
+                            <i class="fas fa-cloud-upload-alt"></i> Upload New Material
+                        </h3>
+
+                        <form id="uploadForm" class="upload-form" enctype="multipart/form-data" method="post" action="api/handle-upload.php">
+                            <!-- File Upload -->
+                            <div class="form-group mb-4">
+                                <label for="fileInput" class="form-label">Select File</label>
+                                <div class="file-upload-wrapper">
+                                    <input type="file" id="fileInput" name="file" class="form-control file-input" accept=".pdf,.mp4,.mov,.avi,.mkv,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png" required>
+                                    <div class="file-upload-hint">
+                                        <i class="fas fa-file"></i>
+                                        <p>Upload PDFs, Videos, or Documents (Max 100MB)</p>
+                                        <small>Supported: PDF, MP4, MOV, AVI, MKV, DOC, DOCX, PPT, PPTX, JPG, PNG</small>
+                                    </div>
+                                </div>
+                                <div id="filePreview" class="file-preview mt-3"></div>
+                            </div>
+
+                            <!-- Title -->
+                            <div class="form-group mb-4">
+                                <label for="titleInput" class="form-label">Title</label>
+                                <input type="text" id="titleInput" name="title" class="form-control" required>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="form-group mb-4">
+                                <label for="descriptionInput" class="form-label">Description</label>
+                                <textarea id="descriptionInput" name="description" class="form-control" rows="4" required></textarea>
+                            </div>
+
+                            <!-- Category -->
+                            <div class="form-group mb-4">
+                                <label for="categorySelect" class="form-label">Category</label>
+                                <div class="custom-dropdown">
+                                    <button id="categoryDropdownButton" class="custom-dropdown-button" type="button">Select Category</button>
+                                    <div class="custom-dropdown-menu" role="listbox" aria-labelledby="categoryDropdownButton"></div>
+                                    <select id="categorySelect" name="category" class="d-none" required></select>
+                                </div>
+                            </div>
+
+                            <!-- Price in Coins -->
+                            <div class="form-group mb-4">
+                                <label for="priceInput" class="form-label">Price</label>
+                                <div class="input-group">
+                                    <input type="number" step="1" id="priceInput" name="price" class="form-control" min="1" max="1000" required>
+                                    <span class="input-group-text">
+                                        <img src="assets/images/coin.png" alt="Coin" style="width: 20px; height: 20px;">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-upload w-100">
+                                    <i class="fas fa-upload"></i> Upload Material
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Sidebar: Recently Uploaded -->
+                <div class="col-lg-4">
+                    <div class="sidebar-card">
+                        <h4 class="sidebar-title">
+                            <i class="fas fa-history"></i> Recently Uploaded
+                        </h4>
+
+                        <div class="recent-uploads-list">
+                                <!-- Recently uploaded items will be populated here by JavaScript -->
+                        </div>
+
+                        <div class="sidebar-cta mt-4">
+                            <a href="#" class="btn btn-outline-secondary w-100" id="viewAllUploadsBtn">View My Uploads</a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Tips -->
+                    <div class="sidebar-card mt-4">
+                        <h4 class="sidebar-title">
+                            <i class="fas fa-lightbulb"></i> Quick Tips
+                        </h4>
+                        <ul class="tips-list">
+                            <li><strong>Use clear titles and descriptions</strong> so your uploads show up easily in search.</li>
+                            <li><strong>More sales boost your position</strong> when others sort by popularity.</li>
+                            <li><strong>Keep your prices fair</strong> to encourage more downloads for everyone.</li>
+                            <li><strong>Coins can be bought but not cashed out,</strong> upload quality content to earn more.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dashboard End -->
+
+    <!-- All Uploads Modal -->
+    <div class="modal fade" id="allUploadsModal" tabindex="-1" aria-labelledby="allUploadsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="allUploadsModalLabel">
+                        <i class="fas fa-cloud-upload-alt"></i> All My Uploads
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="allUploadsContainer" class="all-uploads-container">
+                        <!-- Uploads will be dynamically populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Confirm Delete Modal (custom gray with white text) -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content confirm-modal-content">
+                    <div class="modal-body text-center confirm-modal-body">
+                        <p id="confirmModalMessage" style="margin:0; font-size:0.95rem;"></p>
+                        <div class="mt-3 d-flex justify-content-center gap-3">
+                            <button type="button" class="btn btn-light btn-sm" id="confirmCancelBtn">No</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="confirmYesBtn">Yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Footer Section -->
+    <footer id="footer" class="s-footer">
+        <div class="footer-inner">
+            <div class="s-footer__top">
+                <div class="column footer-block footer-newsletter">
+                    <h5>
+                    Subscribe to our mailing list for <br>
+                    updates, news, and exclusive offers.
+                    </h5>
+
+                    <div class="subscribe-form">
+                        <form id="mc-form" class="mc-form">
+                            <div class="mc-input-wrap">
+                                <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Your Email Address" required>
+                                <input type="submit" name="subscribe" value="Subscribe" class="btn btn--primary">
+                            </div>
+                            <div class="mc-status"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="s-footer__main">
+                <div class="footer-block s-footer__main-start">
+                    <div class="s-footer__brand">
+                        <div class="s-footer__logo">
+                            <img src="assets/images/logo.png" alt="NoteShare Logo">
+                        </div>
+                        <h1>NoteShare</h1>
+                    </div>
+                </div>
+
+                <div class="footer-info-inline">
+                    <div class="footer-block">
+                        <h6>Location</h6>
+                        <p>Mihintale, Anuradhapura<br>SL 50300</p>
+                    </div>
+                    <div class="footer-block">
+                        <h6>Contacts</h6>
+                        <ul class="link-list">
+                            <li><a href="mailto:webnoteshare@gmail.com">webnoteshare@gmail.com</a></li>
+                            <li><a href="tel:+94701576744">(+94) 070-157-6744</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-block">
+                        <h6>Conditions</h6>
+                        <ul class="opening-hours">
+                            <li><span class="opening-hours__days">Privacy Policy</span></li>
+                            <li><span class="opening-hours__days">Terms of Use</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SVG Icons for Cart -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <defs>
+            <symbol id="cart" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M8.5 19a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 8.5 19ZM19 16H7a1 1 0 0 1 0-2h8.491a3.013 3.013 0 0 0 2.885-2.176l1.585-5.55A1 1 0 0 0 19 5H6.74a3.007 3.007 0 0 0-2.82-2H3a1 1 0 0 0 0 2h.921a1.005 1.005 0 0 1 .962.725l.155.545v.005l1.641 5.742A3 3 0 0 0 7 18h12a1 1 0 0 0 0-2Zm-1.326-9l-1.22 4.274a1.005 1.005 0 0 1-.963.726H8.754l-.255-.892L7.326 7ZM16.5 19a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5Z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- Cart Popup (Offcanvas) -->
+    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasCartLabel">Your Cart</h5>
+            <button type="button" class="btn-close-custom" data-bs-dismiss="offcanvas" aria-label="Close">
+                <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
+                    <path d="M3 3 L13 13 M13 3 L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-0">Introduction to HTML</h6>
+                        <button type="button" class="remove-pill" aria-label="Remove Introduction to HTML">Remove</button>
+                    </div>
+                    <span class="price-pill rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">100</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-0">Linear Programming</h6>
+                        <button type="button" class="remove-pill" aria-label="Remove Linear Programming">Remove</button>
+                    </div>
+                    <span class="price-pill rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">150</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-0">Job Design</h6>
+                        <button type="button" class="remove-pill" aria-label="Remove Job Design">Remove</button>
+                    </div>
+                    <span class="price-pill rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">200</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <strong>Total:</strong>
+                    <span class="price-pill price-pill--clean rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">450</span>
+                </li>
+            </ul>
+            <button class="w-100 btn btn-primary btn-lg" type="button">Check Out</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/navBar.js?v=20251205"></script>
+    <script src="assets/js/cart.js?v=20251205"></script>
+    <script src="assets/js/uploads.js?v=20251205"></script>
+    <script src="assets/js/wallet.js?v=20251205"></script>
+
+    <!-- Wallet & Coin Purchase Modal -->
+    <div id="walletModalOverlay" class="wallet-modal-overlay">
+      <div class="wallet-modal-content">
+        <!-- Modal Header -->
+        <div class="wallet-modal-header">
+          <h2>
+            My Wallet
+          </h2>
+          <button class="wallet-modal-close" aria-label="Close wallet">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="wallet-modal-body">
+          <!-- Balance Card (split) -->
+          <div class="wallet-balance-card split">
+            <div class="balance-left">
+              <div class="wallet-balance-label">Current Balance</div>
+            </div>
+            <div class="balance-right">
+              <div class="wallet-balance-amount"><img src="assets/images/coin.gif" alt="coin" class="balance-coin-icon"> <span id="walletBalance">-</span></div>
+            </div>
+          </div>
+
+          <!-- Purchase Coins Section -->
+          <div class="wallet-section-title">Buy Coins</div>
+
+          <!-- Preset Coin Packages -->
+          <div class="wallet-purchase-options">
+            <button class="coin-package-btn" data-coins="50">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 50</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 100</div>
+            </button>
+
+            <button class="coin-package-btn" data-coins="100">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 100</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 200</div>
+            </button>
+
+            <button class="coin-package-btn" data-coins="200">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 200</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 400</div>
+            </button>
+
+            <button class="coin-package-btn" data-coins="500">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 500</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 1000</div>
+            </button>
+          </div>
+
+          <!-- Selected Package Details -->
+          <div id="walletPackageDetails" class="wallet-package-details" style="display: none;">
+            <!-- Populated by JavaScript -->
+          </div>
+
+          <!-- Custom Amount Section -->
+          <div class="custom-amount-section">
+            <label for="customCoinAmount" class="custom-amount-label">Or Enter Custom Amount</label>
+            <input type="number" id="customCoinAmount" class="custom-amount-input" placeholder="Enter number of coins" min="1" max="10000">
+            <div id="walletCustomPrice" class="wallet-price-display" style="display: none;"></div>
+          </div>
+
+          <!-- Purchase Button -->
+          <button class="wallet-purchase-btn"><i class="fas fa-credit-card"></i> Proceed to Payment</button>
+
+          <!-- Info Text -->
+          <p class="wallet-info-text">💳 Secure payment via Mastercard and Visa</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscribe Form Script -->
+    <script src="assets/js/subscribe.js"></script>
+
+</body>
+
+</html>
+

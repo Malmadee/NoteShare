@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Session & Debug Info</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        .section { margin: 20px 0; padding: 15px; background: #f0f0f0; }
+        pre { background: #000; color: #0f0; padding: 10px; overflow: auto; max-height: 300px; }
+    </style>
+</head>
+<body>
+    <h1>Session & Debug Info</h1>
+    
+    <div class="section">
+        <h2>Session Information</h2>
+        <button onclick="checkSession()">Check Session</button>
+        <div id="sessionInfo"></div>
+    </div>
+    
+    <div class="section">
+        <h2>Local Storage / Session Storage</h2>
+        <div id="storageInfo"></div>
+    </div>
+    
+    <div class="section">
+        <h2>Console Logs (Open Dev Tools!)</h2>
+        <p>Open your browser's Developer Console (F12) to see real-time logs from the uploads page</p>
+    </div>
+    
+    <script>
+        function checkSession() {
+            fetch('api/check-session.php', { credentials: 'same-origin' })
+                .then(r => r.json())
+                .then(data => {
+                    document.getElementById('sessionInfo').innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                })
+                .catch(err => {
+                    document.getElementById('sessionInfo').innerHTML = '<pre>ERROR: ' + err.message + '</pre>';
+                });
+        }
+        
+        document.getElementById('storageInfo').innerHTML = `
+            <p><strong>Local Storage keys:</strong> ${Object.keys(localStorage).length}</p>
+            <pre>${Object.entries(localStorage).map(([k,v]) => k + ': ' + v).join('\n')}</pre>
+            <p><strong>Session Storage keys:</strong> ${Object.keys(sessionStorage).length}</p>
+            <pre>${Object.entries(sessionStorage).map(([k,v]) => k + ': ' + v).join('\n')}</pre>
+        `;
+        
+        // Auto check session on load
+        checkSession();
+    </script>
+</body>
+</html>

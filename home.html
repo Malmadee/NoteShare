@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <title>NoteShare | Home</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+    <!-- Bootstrap core CSS -->
+    <!-- removed vendor/bootstrap reference (file not present). Using local `css/bootstrap.min.css` below. -->
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/lightbox.min.css">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <!-- removed Font Awesome v5 duplicate; v6 already included above. -->
+
+    <!-- Customized Bootstrap Stylesheet (switched to CDN because local file is empty) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS (must come BEFORE footer.css so footer styles can override) -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+    <!-- Template Stylesheet -->
+    <link href="assets/css/navBar.css" rel="stylesheet">
+
+    <!-- Courses Stylesheet (loaded last for highest priority) -->
+    <link rel="stylesheet" href="assets/css/courses.css">
+    <link rel="stylesheet" href="assets/css/course-modal.css">
+
+    <!-- Cart Popup Stylesheet -->
+    <link rel="stylesheet" href="assets/css/cart.css">
+
+    <!-- Wallet & Coin Purchase Stylesheet -->
+    <link rel="stylesheet" href="assets/css/wallet.css">
+
+    <!-- File Details Modal Stylesheet -->
+    <link href="assets/css/file-details-modal.css" rel="stylesheet">
+    
+    <!-- Modal Scrollbar Stylesheet -->
+    <link href="assets/css/modal-scrollbar.css" rel="stylesheet">
+
+    <!-- Footer Stylesheet (loaded LAST to ensure footer styles override all conflicts) -->
+    <link href="assets/css/footer.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+        <!-- Navbar (inlined so it displays without fetch) -->
+        <div class="container-fluid fixed-top">
+            <div class="container topbar bg-primary d-none d-lg-block">
+                <div class="d-flex justify-content-between">
+                    <div class="top-info ps-2">
+                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Mihintale, Anuradhapura</a></small>
+                        <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">webnoteshare@gmail.com</a></small>
+                    </div>
+                    <div class="top-link pe-2">
+                        <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
+                        <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
+                        <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
+                    </div>
+                </div>
+            </div>
+            <div class="container px-0">
+                <nav class="navbar navbar-light bg-white navbar-expand-xl">
+                    <a href="home.html" class="navbar-brand">
+                        <img src="assets/images/logo.png" alt="NoteShare Logo" class="logo-img">
+                        <h1 style="font-weight:700; color:#80C157; font-family:'Raleway', 'Open Sans', sans-serif; font-size:2.5rem; margin:0;">NoteShare</h1>
+                    </a>
+                    <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars text-primary"></span>
+                    </button>
+                    <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                        <div class="navbar-nav mx-auto">
+                            <a href="home.html" class="nav-item nav-link active">Home</a>
+                            <a href="browse.html" class="nav-item nav-link">Browse</a>
+                            <a href="uploads.html" class="nav-item nav-link">My Uploads</a>
+                            <a href="purchases.html" class="nav-item nav-link">My Purchases</a>
+                            <a href="support.html" class="nav-item nav-link">Support</a>
+                        </div>
+                        
+                        <div class="d-flex m-3 me-0 align-items-center navbar-icons">
+                            <!-- Coin Icon (Wallet) -->
+                            <button class="wallet-btn" style="background: none; border: none; padding: 0; cursor: pointer;" title="Open Wallet">
+                                <img src="assets/images/coin.png" alt="Wallet" class="wallet-img">
+                            </button>
+                            
+                            <!-- Cart Icon -->
+                            <a href="#" class="position-relative cart-icon" id="cartIconBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                                <i class="fa fa-shopping-bag"></i>
+                            </a>
+
+                            <!-- Logout Button -->
+                            <button class="btn white-btn logout-btn" onclick="handleLogout()" id="logoutBtn">Logout</button>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+ 
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- removed broken lib/easing include (missing `lib/` folder) -->
+
+        <!-- Template Javascript: navbar behavior -->
+        <script src="assets/js/navBar.js"></script>
+     <!-- removed unused #navbar-placeholder (navbar is inline) -->
+     <script src="assets/js/cart.js"></script>
+
+    <!-- ***** Main Banner Area Start ***** -->
+    <section class="section main-banner" id="top" data-section="section1">
+        <video autoplay muted loop id="bg-video">
+            <source src="assets/images/book.mp4" type="video/mp4" />
+        </video>
+        <div class="video-overlay header-text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="caption">
+                            <h6>Hello Students</h6>
+                            <h2>Welcome to NoteShare</h2>
+                            <p>
+                                Here you can discover notes and resources made by students like you. Share your own work, learn from others, and make studying a more connected and meaningful experience.
+                            </p>
+                            <div class="main-button-red">
+                                <div class="scroll-to-section">
+                                    <a href="browse.html">Start Learning!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Main Banner Area End ***** -->
+
+    <section class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="owl-service-item owl-carousel">
+                        <div class="item">
+                            <div class="icon">
+                                <img src="assets/images/service-icon-01.png" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>Best for Sharing</h4>
+                                <p>Easily share your notes and videos with fellow students, helping everyone learn and succeed together.</p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="icon">
+                                <img src="assets/images/service-icon-03.png" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>Fast and Easy Upload</h4>
+                                <p>Designed for students, making uploading, browsing, and discovering study materials simple, fast, and accessible.</p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="icon">
+                                <img src="assets/images/service-icon-03.png" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>Collaborative Learning</h4>
+                                <p>Connect with peers, exchange ideas, and improve understanding through shared notes and resources.</p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="icon">
+                                <img src="assets/images/service-icon-02.png" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>Affordable Learning</h4>
+                                <p>Access valuable study materials without spending too much, keeping learning cost-effective and easy.</p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="icon">
+                                <img src="assets/images/service-icon-03.png" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>Eco-Friendly Study</h4>
+                                <p>Reduce paper waste by using digital notes and resources, making studying greener and more sustainable.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Uploads / Courses (embedded here, migrated from course.html) -->
+    <section class="our-courses">
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <div class="row mb-3">
+                    <div class="col-lg-12">
+                        <div class="section-heading">
+                            <h2>Most Popular</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="courses-grid">
+                    <!-- Courses will be loaded dynamically from API -->
+                </div>
+                <div class="col-12">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination pagination-lg justify-content-center mb-0" id="pagination-controls">
+                            <!-- Pagination will be generated here -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Load the top 9 most popular materials on home page
+        async function loadPopularCoursesHome() {
+            try {
+                const response = await fetch('api/get-most-popular.php');
+                const data = await response.json();
+                
+                if (data.success && data.materials.length > 0) {
+                    const container = document.getElementById('courses-grid');
+                    container.innerHTML = '';
+                    
+                    data.materials.forEach((material) => {
+                        const col = document.createElement('div');
+                        col.className = 'col-lg-4 col-md-6 pb-4';
+                        
+                        const a = document.createElement('a');
+                        a.className = 'courses-list-item position-relative d-block overflow-hidden mb-2';
+                        a.href = '#';
+                        a.dataset.id = material.id;
+                        
+                        // Add click handler to open file details modal
+                        a.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            if (window.fileDetailsModal) {
+                                window.fileDetailsModal.openFile(material);
+                            }
+                        });
+                        
+                        // Category badge
+                        const spanCat = document.createElement('span');
+                        spanCat.className = 'badge-category';
+                        spanCat.textContent = material.category || 'Other';
+                        
+                        // Price badge
+                        const spanPrice = document.createElement('span');
+                        spanPrice.className = 'badge-price';
+                        spanPrice.innerHTML = '<img src="assets/images/coin.png" class="badge-coin" alt="coin">' + Math.round(material.price || 0);
+                        
+                        // File type box
+                        const fileBox = document.createElement('div');
+                        fileBox.className = 'file-type-box';
+                        
+                        let fileType = 'pdf'; // default
+                        const fileExt = (material.file_path || material.title || '').toLowerCase();
+                        
+                        if (fileExt.includes('.pdf')) {
+                            fileType = 'pdf';
+                        } else if (fileExt.includes('.ppt') || fileExt.includes('.pptx')) {
+                            fileType = 'pptx';
+                        } else if (fileExt.includes('.doc') || fileExt.includes('.docx')) {
+                            fileType = 'docx';
+                        } else if (fileExt.includes('.xls') || fileExt.includes('.xlsx')) {
+                            fileType = 'xlsx';
+                        } else if (fileExt.includes('.mp4') || fileExt.includes('.avi') || fileExt.includes('.mov') || fileExt.includes('.webm')) {
+                            fileType = 'video';
+                        } else if (fileExt.includes('.jpg') || fileExt.includes('.jpeg') || fileExt.includes('.png') || fileExt.includes('.gif')) {
+                            fileType = 'image';
+                        } else if (fileExt.includes('.zip') || fileExt.includes('.rar') || fileExt.includes('.7z')) {
+                            fileType = 'archive';
+                        }
+                        
+                        fileBox.setAttribute('data-file-type', fileType);
+                        
+                        const fileIcon = document.createElement('img');
+                        fileIcon.className = 'file-icon';
+                        
+                        const iconMap = {
+                            pdf: 'assets/images/file-pdf.svg',
+                            pptx: 'assets/images/file-pptx.svg',
+                            docx: 'assets/images/file-docx.svg',
+                            xlsx: 'assets/images/file-xlsx.svg',
+                            video: 'assets/images/file-video.svg',
+                            image: 'assets/images/file-image.svg',
+                            archive: 'assets/images/file-archive.svg'
+                        };
+                        
+                        fileIcon.src = iconMap[fileType] || iconMap.pdf;
+                        fileIcon.alt = fileType.toUpperCase();
+                        fileBox.appendChild(fileIcon);
+                        
+                        const fileLabel = document.createElement('div');
+                        fileLabel.className = 'file-label';
+                        fileLabel.textContent = fileType.toUpperCase();
+                        fileBox.appendChild(fileLabel);
+                        
+                        // Title text
+                        const txt = document.createElement('div');
+                        txt.className = 'courses-text';
+                        const h4 = document.createElement('h4');
+                        h4.className = 'text-white px-3';
+                        h4.textContent = material.title;
+                        txt.appendChild(h4);
+                        
+                        // Assemble the tile
+                        a.appendChild(spanCat);
+                        a.appendChild(spanPrice);
+                        a.appendChild(fileBox);
+                        a.appendChild(txt);
+                        
+                        col.appendChild(a);
+                        container.appendChild(col);
+                    });
+                } else {
+                    document.getElementById('courses-grid').innerHTML = '<p class="col-12 text-center text-white">No courses available yet.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading popular courses:', error);
+                document.getElementById('courses-grid').innerHTML = '<p class="col-12 text-center text-danger">Error loading courses</p>';
+            }
+        }
+        
+        // Load courses when page loads
+        document.addEventListener('DOMContentLoaded', loadPopularCoursesHome);
+    </script>
+
+    <!-- Tastimonial Start (inlined from testimonial.html) -->
+    <div class="container-fluid testimonial py-5">
+        <div class="container py-5">
+            <div class="testimonial-header text-center">
+                <h4 class="text-primary">Testimonial</h4>
+                <h1 class="display-5 mb-5 text-dark">Our Students are Saying</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel">
+                <div class="testimonial-item img-border-radius rounded p-4">
+                    <div class="position-relative">
+                        <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
+                        <div class="mb-4 pb-4 border-bottom border-secondary">
+                            <p class="mb-0">NoteShare has completely changed how I study! I can find quality notes fast and share my own with other students.</p>
+                        </div>
+                        <div class="d-flex align-items-center flex-nowrap">
+                            <div class="bg-secondary rounded">
+                                <img src="assets/images/testimonial-1.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                            </div>
+                            <div class="ms-4 d-block">
+                                <h4 class="text-dark">Emma Collins</h4>
+                                <p class="m-0 pb-3">Business Management Undergraduate</p>
+                                <div class="d-flex pe-5">
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item img-border-radius rounded p-4">
+                    <div class="position-relative">
+                        <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
+                        <div class="mb-4 pb-4 border-bottom border-secondary">
+                            <p class="mb-0">I love how NoteShare lets me earn coins for uploading my notes. It’s fun, helpful, and encourages real collaboration.</p>
+                        </div>
+                        <div class="d-flex align-items-center flex-nowrap">
+                            <div class="bg-secondary rounded">
+                                <img src="assets/images/testimonial-2.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                            </div>
+                            <div class="ms-4 d-block">
+                                <h4 class="text-dark">Liam Parker</h4>
+                                <p class="m-0 pb-3">Computer Science Undergraduate</p>
+                                <div class="d-flex pe-5">
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item img-border-radius rounded p-4">
+                    <div class="position-relative">
+                        <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
+                        <div class="mb-4 pb-4 border-bottom border-secondary">
+                            <p class="mb-0">The browsing and filters on NoteShare make everything so easy. I always find the right materials without wasting time.</p>
+                        </div>
+                        <div class="d-flex align-items-center flex-nowrap">
+                            <div class="bg-secondary rounded">
+                                <img src="assets/images/testimonial-3.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                            </div>
+                            <div class="ms-4 d-block">
+                                <h4 class="text-dark">Sophia Reed</h4>
+                                <p class="m-0 pb-3">Economics Undergraduate</p>
+                                <div class="d-flex pe-5">
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tastimonial End -->
+    <!-- Bootstrap core JavaScript -->
+    <!-- removed vendor/jquery and vendor/bootstrap references (missing); using CDN includes earlier in the file. -->
+    
+    <!-- Testimonial/vendor JS (moved into assets/) -->
+    <script src="assets/js/easing.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/lightbox.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/course.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/video.js"></script>
+    <script src="assets/js/slick-slider.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+            var direction = section.replace(/#/, ''),
+                reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+                reqSectionPos = reqSection.offset().top - 0;
+
+            if (isAnimate) {
+                $('body, html').animate({
+                    scrollTop: reqSectionPos
+                }, 800);
+            } else {
+                $('body, html').scrollTop(reqSectionPos);
+            }
+        };
+
+        var checkSection = function checkSection() {
+    
+            <!-- Inline Diagnostic UI Script -->
+    
+            $('.section').each(function () {
+                var $this = $(this),
+                    topEdge = $this.offset().top - 80,
+                    bottomEdge = topEdge + $this.height(),
+                    wScroll = $(window).scrollTop();
+
+                if (topEdge < wScroll && bottomEdge > wScroll) {
+                    var currentId = $this.data('section'),
+                        reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+
+                    reqLink.closest('li').addClass('active').siblings().removeClass('active');
+                }
+            });
+        };
+
+        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+            e.preventDefault();
+            showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+            checkSection();
+        });
+    </script>
+
+    <!-- footer styles moved to assets/css/footer.css -->
+
+    <!-- Footer Section (added at the end without affecting testimonials or CSS) -->
+    <footer id="footer" class="s-footer">
+        <div class="footer-inner">
+            <div class="s-footer__top">
+                <div class="column footer-block footer-newsletter">
+                    <h5>
+                    Subscribe to our mailing list for <br>
+                    updates, news, and exclusive offers.
+                    </h5>
+
+                    <div class="subscribe-form">
+                        <form id="mc-form" class="mc-form">
+                            <div class="mc-input-wrap">
+                                <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Your Email Address" required>
+                                <input type="submit" name="subscribe" value="Subscribe" class="btn btn--primary">
+                            </div>
+                            <div class="mc-status"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="s-footer__main">
+                <div class="footer-block s-footer__main-start">
+                    <div class="s-footer__brand">
+                        <div class="s-footer__logo">
+                            <img src="assets/images/logo.png" alt="NoteShare Logo">
+                        </div>
+                        <h1>NoteShare</h1>
+                    </div>
+                </div>
+
+                <div class="footer-info-inline">
+                    <div class="footer-block">
+                        <h6>Location</h6>
+                        <p>Mihintale, Anuradhapura<br>SL 50300</p>
+                    </div>
+                    <div class="footer-block">
+                        <h6>Contacts</h6>
+                        <ul class="link-list">
+                            <li><a href="mailto:webnoteshare@gmail.com">webnoteshare@gmail.com</a></li>
+                            <li><a href="tel:+94701576744">(+94) 070-157-6744</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-block">
+                        <h6>Conditions</h6>
+                        <ul class="opening-hours">
+                            <li><span class="opening-hours__days">Privacy Policy</span></li>
+                            <li><span class="opening-hours__days">Terms of Use</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <script>
+        // Handle Start Learning button click
+        document.querySelector('.scroll-to-section a').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = this.href;
+        });
+    </script>
+
+    <!-- Courses Pagination Script -->
+    <script src="assets/js/courses-init.js"></script>
+    <script src="assets/js/course-modal.js"></script>
+    
+    <!-- PDF Thumbnail Generator -->
+    <script src="assets/js/pdf-thumbnail-generator.js"></script>
+    
+    <!-- File Details Modal Script -->
+    <script src="assets/js/file-details-modal.js?v=1"></script>
+
+    <!-- Course Detail Modal -->
+    <div id="courseModalBackdrop" class="course-modal-backdrop" aria-hidden="true">
+        <div class="course-modal" role="dialog" aria-modal="true">
+            <button class="close-btn cm-close" aria-label="Close">&times;</button>
+            <div id="cm-left" class="left-image cm-left-viewer">
+                <!-- injected pages/video/image -->
+            </div>
+            <div class="right-content">
+                <h2 id="cm-title">Course Title</h2>
+                <span class="category" id="cm-category">Category</span>
+                <span class="creator" id="cm-creator">Creator: Unknown</span>
+                <div class="price-row"><img src="assets/images/coin.png" class="coin-sm" alt="coin"> <span id="cm-price">0</span></div>
+                <p class="description" id="cm-description">Course description goes here.</p>
+                <a href="#" id="cm-add-to-cart" class="add-to-cart"><i class="fa fa-shopping-bag cart-icon-in-btn" aria-hidden="true"></i> Add to cart</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SVG Icons for Cart -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <defs>
+            <symbol id="cart" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M8.5 19a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 8.5 19ZM19 16H7a1 1 0 0 1 0-2h8.491a3.013 3.013 0 0 0 2.885-2.176l1.585-5.55A1 1 0 0 0 19 5H6.74a3.007 3.007 0 0 0-2.82-2H3a1 1 0 0 0 0 2h.921a1.005 1.005 0 0 1 .962.725l.155.545v.005l1.641 5.742A3 3 0 0 0 7 18h12a1 1 0 0 0 0-2Zm-1.326-9l-1.22 4.274a1.005 1.005 0 0 1-.963.726H8.754l-.255-.892L7.326 7ZM16.5 19a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5Z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- Cart Popup (Offcanvas) -->
+    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasCartLabel">Your Cart</h5>
+            <button type="button" class="btn-close-custom" data-bs-dismiss="offcanvas" aria-label="Close">
+                <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
+                    <path d="M3 3 L13 13 M13 3 L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-0">Introduction to HTML</h6>
+                        <button type="button" class="remove-pill" aria-label="Remove Introduction to HTML">Remove</button>
+                    </div>
+                    <span class="price-pill rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">100</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-0">Linear Programming</h6>
+                        <button type="button" class="remove-pill" aria-label="Remove Linear Programming">Remove</button>
+                    </div>
+                    <span class="price-pill rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">150</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-0">Job Design</h6>
+                        <button type="button" class="remove-pill" aria-label="Remove Job Design">Remove</button>
+                    </div>
+                    <span class="price-pill rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">200</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <strong>Total:</strong>
+                    <span class="price-pill price-pill--clean rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">450</span>
+                </li>
+            </ul>
+            <button class="w-100 btn btn-primary btn-lg" type="button">Check Out</button>
+        </div>
+    </div>
+
+    <!-- Wallet & Coin Purchase Modal -->
+    <div id="walletModalOverlay" class="wallet-modal-overlay">
+      <div class="wallet-modal-content">
+        <!-- Modal Header -->
+        <div class="wallet-modal-header">
+          <h2>
+            My Wallet
+          </h2>
+          <button class="wallet-modal-close" aria-label="Close wallet">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="wallet-modal-body">
+          <!-- Balance Card -->
+          <div class="wallet-balance-card split">
+            <div class="balance-left">
+              <div class="wallet-balance-label">Current Balance</div>
+            </div>
+            <div class="balance-right">
+              <div class="wallet-balance-amount"><img src="assets/images/coin.gif" alt="coin" class="balance-coin-icon"> <span id="walletBalance">-</span></div>
+            </div>
+          </div>
+
+          <!-- Purchase Coins Section -->
+          <div class="wallet-section-title">
+            Buy Coins
+          </div>
+
+          <!-- Preset Coin Packages -->
+          <div class="wallet-purchase-options">
+            <button class="coin-package-btn" data-coins="50">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 50</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 100</div>
+            </button>
+
+            <button class="coin-package-btn" data-coins="100">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 100</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 200</div>
+            </button>
+
+            <button class="coin-package-btn" data-coins="200">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 200</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 400</div>
+            </button>
+
+            <button class="coin-package-btn" data-coins="500">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 500</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 1000</div>
+            </button>
+          </div>
+
+          <!-- Selected Package Details -->
+          <div id="walletPackageDetails" class="wallet-package-details" style="display: none;">
+            <!-- Populated by JavaScript -->
+          </div>
+
+          <!-- Custom Amount Section -->
+          <div class="custom-amount-section">
+            <label for="customCoinAmount" class="custom-amount-label">
+              Or Enter Custom Amount
+            </label>
+            <input 
+              type="number" 
+              id="customCoinAmount" 
+              class="custom-amount-input" 
+              placeholder="Enter number of coins"
+              min="1"
+              max="10000"
+            >
+            <div id="walletCustomPrice" class="wallet-price-display" style="display: none;">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+
+          <!-- Purchase Button -->
+          <button class="wallet-purchase-btn">
+            <i class="fas fa-credit-card"></i> Proceed to Payment
+          </button>
+
+          <!-- Info Text -->
+          <p class="wallet-info-text">
+            💳 Secure payment via Mastercard and Visa
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wallet & Coin Purchase Script -->
+    <script src="assets/js/wallet.js"></script>
+
+    <!-- File Details Modal -->
+    <div class="modal fade" id="fileDetailsModal" tabindex="-1" aria-labelledby="fileDetailsLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" style="max-height: 79vh; max-width: 1100px;">
+            <div class="modal-content" style="max-height: 79vh; display: flex; flex-direction: column; border-radius: 12px; position: relative;">
+                <!-- Close Button inside modal at upper right -->
+                <button type="button" class="btn-close-modal" aria-label="Close" style="background: #81c408; border: none; color: white; font-size: 1.5rem; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; padding: 0; position: absolute; top: 15px; right: 20px; z-index: 2001;">
+                    <i class="fas fa-times"></i>
+                </button>
+                <!-- White Header Section -->
+                <div id="modalHeader" style="background: #fff; padding: 10px 20px; flex-shrink: 0; max-width: 85%; border-radius: 12px 12px 0 0;">
+                    <h5 id="modalHeaderTitle" style="margin: 0; color: #333; font-weight: 600; display: none;"></h5>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body p-0" style="max-height: calc(79vh - 60px); flex: 1; overflow: hidden;">
+                    <div class="row g-0" style="height: 100%; width: 100%;">
+                        <!-- White Gap on the Left -->
+                        <div style="width: 1%; height: 100%; background: white;"></div>
+                        <!-- Left side - Page preview -->
+                        <div style="width: 33%; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+                            <div id="pagePreviewContainer" class="page-preview-container" style="flex: 1; overflow-y: auto; padding: 30px 5px 5px 20px; box-sizing: border-box; min-height: 0;">
+                                <!-- Pages will be rendered here -->
+                            </div>
+                        </div>
+                        <!-- Right side - File details -->
+                        <div style="width: 65%; height: 100%; overflow-y: auto; padding: 40px 40px 80px 50px; box-sizing: border-box;">
+                            <h3 id="fileTitle" style="color: #81c408; font-weight: 900; margin-bottom: 15px;"></h3>
+                            
+                            <!-- Pills Section -->
+                            <div class="mb-3 d-flex flex-wrap gap-2">
+                                <span id="fileCategoryPill" class="badge" style="background-color: #fcbd40; color: white; font-size: 12px; padding: 8px 12px; border-radius: 20px;"></span>
+                                <span id="fileCreatorPill" class="badge" style="background-color: #fcbd40; color: white; font-size: 12px; padding: 8px 12px; border-radius: 20px;"></span>
+                                <span id="fileDurationPill" class="badge" style="background-color: #fcbd40; color: white; font-size: 12px; padding: 8px 12px; border-radius: 20px;"></span>
+                            </div>
+                            
+                            <!-- Price -->
+                            <div class="mb-3" style="display: flex; align-items: center; gap: 8px;">
+                                <img src="assets/images/coin.png" alt="coin" style="width: 24px; height: 24px;">
+                                <span id="filePrice" style="font-size: 18px; font-weight: bold;"></span>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p id="fileDescription" style="color: #666; font-size: 14px; line-height: 1.6;"></p>
+                            
+                            <!-- Add to Cart Button -->
+                            <div class="mt-4">
+                                <button id="purchaseBtn" class="btn w-100" style="background-color: #81c408; border: none; font-weight: bold; color: white; transition: background-color 0.3s ease;">
+                                    <i class="fa fa-shopping-bag me-2"></i>Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Session Check Script -->
+    <script src="assets/js/session-check.js"></script>
+
+    <!-- Subscribe Form Script -->
+    <script src="assets/js/subscribe.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>NoteShare | My Purchases</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Include Poppins to match Home page, plus Open Sans and Raleway -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600;700&family=Raleway:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Purchases Table Section End -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Navbar Stylesheet -->
+    <link href="assets/css/navBar.css" rel="stylesheet">
+
+    <!-- Purchases Table Stylesheet -->
+    <link href="assets/css/purchases.css" rel="stylesheet">
+    <!-- Footer Stylesheet -->
+    <link href="assets/css/footer.css" rel="stylesheet">
+    <!-- Cart Popup Stylesheet -->
+    <link rel="stylesheet" href="assets/css/cart.css">
+
+    <!-- Wallet & Coin Purchase Stylesheet -->
+    <link rel="stylesheet" href="assets/css/wallet.css">
+
+    <style>
+        @keyframes slideIn {
+            from {
+                transform: translateX(-400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(-400px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="purchases-page">
+
+    <!-- Navbar Start -->
+    <div class="container-fluid fixed-top">
+        <div class="container topbar bg-primary d-none d-lg-block">
+            <div class="d-flex justify-content-between">
+                <div class="top-info ps-2">
+                    <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Mihintale, Anuradhapura</a></small>
+                    <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">webnoteshare@gmail.com</a></small>
+                </div>
+                <div class="top-link pe-2">
+                    <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
+                    <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
+                    <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
+                </div>
+            </div>
+        </div>
+        <div class="container px-0">
+            <nav class="navbar navbar-light bg-white navbar-expand-xl">
+                <a href="home.html" class="navbar-brand">
+                    <img src="assets/images/logo.png" alt="NoteShare Logo" class="logo-img">
+                    <h1 style="font-weight:700; color:#80C157; font-family:'Raleway', 'Open Sans', sans-serif; font-size:2.5rem; margin:0;">NoteShare</h1>
+                </a>
+                <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars text-primary"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto">
+                        <a href="home.html" class="nav-item nav-link">Home</a>
+                        <a href="browse.html" class="nav-item nav-link">Browse</a>
+                        <a href="uploads.html" class="nav-item nav-link">My Uploads</a>
+                        <a href="purchases.html" class="nav-item nav-link active">My Purchases</a>
+                        <a href="support.html" class="nav-item nav-link">Support</a>
+                    </div>
+
+                    <div class="d-flex m-3 me-0 align-items-center navbar-icons">
+                        <!-- Coin Icon (Wallet) -->
+                        <button class="wallet-btn" style="background: none; border: none; padding: 0; cursor: pointer;" title="Open Wallet">
+                            <img src="assets/images/coin.png" alt="Wallet" class="wallet-img">
+                        </button>
+
+                        <!-- Cart Icon -->
+                        <a href="#" class="position-relative cart-icon" id="cartIconBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                            <i class="fa fa-shopping-bag"></i>
+                        </a>
+
+                        <!-- Logout Button -->
+                        <button class="btn white-btn logout-btn" onclick="location.href='authentication/authentication.php'">Logout</button>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Purchase Statistics Section Start -->
+    <div class="container-fluid purchases-stats py-3" style="margin-top: 160px;">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6 col-md-6 ps-0">
+                    <div class="stat-card-purchase">
+                        <div class="stat-icon-purchase">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="stat-content-purchase">
+                            <h5 class="stat-label">Total Purchases</h5>
+                            <p class="stat-value">24</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 pe-0">
+                    <div class="stat-card-purchase">
+                        <div class="stat-icon-purchase alt-1">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="stat-content-purchase">
+                            <h5 class="stat-label">Total Spent</h5>
+                            <p class="stat-value">4,200</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Purchase Statistics Section End -->
+
+    <!-- Purchases Table Section Start -->
+    <div class="purchases-container">
+        <!-- Filter Section -->
+        <div class="purchases-filter-section">
+            <div class="filter-row">
+                <div class="filter-item">
+                    <label class="filter-label">Filter by Category:</label>
+                    <div class="custom-dropdown">
+                        <select id="categorySelect" class="d-none">
+                            <option value="all">All Categories</option>
+                            <option value="notes">Notes</option>
+                            <option value="videos">Videos</option>
+                            <option value="exam">Exam Papers</option>
+                            <option value="others">Others</option>
+                        </select>
+                        <button id="categoryDropdownButton" class="custom-dropdown-button">All Categories</button>
+                        <div class="custom-dropdown-menu" aria-hidden="true">
+                            <div class="custom-dropdown-option selected" data-value="all">All Categories</div>
+                            <div class="custom-dropdown-option" data-value="notes">Notes</div>
+                            <div class="custom-dropdown-option" data-value="videos">Videos</div>
+                            <div class="custom-dropdown-option" data-value="exam">Exam Papers</div>
+                            <div class="custom-dropdown-option" data-value="others">Others</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label">Sort by:</label>
+                    <div class="custom-dropdown">
+                        <select id="sortSelect" class="d-none">
+                            <option value="recent">Most Recent</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="price-asc">Price (Low to High)</option>
+                            <option value="price-desc">Price (High to Low)</option>
+                        </select>
+                        <button id="sortDropdownButton" class="custom-dropdown-button">Most Recent</button>
+                        <div class="custom-dropdown-menu" aria-hidden="true">
+                            <div class="custom-dropdown-option selected" data-value="recent">Most Recent</div>
+                            <div class="custom-dropdown-option" data-value="oldest">Oldest First</div>
+                            <div class="custom-dropdown-option" data-value="price-asc">Price (Low to High)</div>
+                            <div class="custom-dropdown-option" data-value="price-desc">Price (High to Low)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-item search-item">
+                    <input type="text" class="filter-search" placeholder="Keyword">
+                    <i class="fas fa-search search-icon"></i>
+                    <button class="btn-search">Search</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="purchases-table-section">
+            <table class="purchases-table">
+                <thead>
+                    <tr>
+                        <th style="font-weight:900;color:#81c408;">Title</th>
+                        <th class="text-center" style="font-weight:900;color:#81c408;">Category</th>
+                        <th class="text-center" style="font-weight:900;color:#81c408;">Price</th>
+                        <th class="text-center" style="font-weight:900;color:#81c408;">Purchase Date</th>
+                        <th class="text-center" style="font-weight:900;color:#81c408;">File Size</th>
+                        <th class="text-center" style="font-weight:900;color:#81c408;">Access</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="course-title">Introduction to HTML</td>
+                        <td class="text-center"><span class="category-badge category-notes">Notes</span></td>
+                        <td class="text-center">
+                            <div class="price-with-coin d-flex justify-content-center align-items-center">
+                                <img src="assets/images/coin.png" alt="Coin" class="price-coin-icon">
+                                <span>100</span>
+                            </div>
+                        </td>
+                        <td class="purchase-date text-center">Nov 15, 2025</td>
+                        <td class="file-size text-center">2.5 MB</td>
+                        <td class="text-center">
+                            <div class="action-icons d-flex justify-content-center align-items-center">
+                                <button class="action-btn download-btn" title="Download"><i class="fas fa-download"></i></button>
+                                <button class="action-btn view-btn" title="View"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="course-title">Linear Programming</td>
+                        <td class="text-center"><span class="category-badge category-videos">Videos</span></td>
+                        <td class="text-center">
+                            <div class="price-with-coin d-flex justify-content-center align-items-center">
+                                <img src="assets/images/coin.png" alt="Coin" class="price-coin-icon">
+                                <span>350</span>
+                            </div>
+                        </td>
+                        <td class="purchase-date text-center">Nov 10, 2025</td>
+                        <td class="file-size text-center">150 MB</td>
+                        <td class="text-center">
+                            <div class="action-icons d-flex justify-content-center align-items-center">
+                                <button class="action-btn download-btn" title="Download"><i class="fas fa-download"></i></button>
+                                <button class="action-btn view-btn" title="View"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="course-title">Job Design</td>
+                        <td class="text-center"><span class="category-badge category-exam">Exam Papers</span></td>
+                        <td class="text-center">
+                            <div class="price-with-coin d-flex justify-content-center align-items-center">
+                                <img src="assets/images/coin.png" alt="Coin" class="price-coin-icon">
+                                <span>250</span>
+                            </div>
+                        </td>
+                        <td class="purchase-date text-center">Nov 5, 2025</td>
+                        <td class="file-size text-center">5.2 MB</td>
+                        <td class="text-center">
+                            <div class="action-icons d-flex justify-content-center align-items-center">
+                                <button class="action-btn download-btn" title="Download"><i class="fas fa-download"></i></button>
+                                <button class="action-btn view-btn" title="View"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Pagination Controls (inside white card) -->
+            <div class="purchases-pagination-wrapper">
+                <nav aria-label="Purchases pagination" class="d-flex justify-content-center mt-3">
+                    <ul class="pagination" id="purchases-pagination">
+                        <!-- Pagination buttons will be injected here by JS -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Purchases Table Section End -->
+    <!-- Pagination Controls Start -->
+    <div class="purchases-pagination-wrapper">
+        <nav aria-label="Purchases pagination" class="d-flex justify-content-center mt-3">
+            <ul class="pagination pagination-lg" id="purchases-pagination">
+                <!-- Pagination buttons will be injected here by JS -->
+            </ul>
+        </nav>
+    </div>
+    <!-- Pagination Controls End -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Navbar Script -->
+    <script src="assets/js/navBar.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/purchases.js"></script>
+
+</body>
+</body>
+    <footer id="footer" class="s-footer">
+        <div class="footer-inner">
+            <div class="s-footer__top">
+                <div class="column footer-block footer-newsletter">
+                    <h5>
+                    Subscribe to our mailing list for <br>
+                    updates, news, and exclusive offers.
+                    </h5>
+
+                    <div class="subscribe-form">
+                        <form id="mc-form" class="mc-form">
+                            <div class="mc-input-wrap">
+                                <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Your Email Address" required>
+                                <input type="submit" name="subscribe" value="Subscribe" class="btn btn--primary">
+                            </div>
+                            <div class="mc-status"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="s-footer__main">
+                <div class="footer-block s-footer__main-start">
+                    <div class="s-footer__brand">
+                        <div class="s-footer__logo">
+                            <img src="assets/images/logo.png" alt="NoteShare Logo">
+                        </div>
+                        <h1>NoteShare</h1>
+                    </div>
+                </div>
+
+                <div class="footer-info-inline">
+                    <div class="footer-block">
+                        <h6>Location</h6>
+                        <p>Mihintale, Anuradhapura<br>SL 50300</p>
+                    </div>
+                    <div class="footer-block">
+                        <h6>Contacts</h6>
+                        <ul class="link-list">
+                            <li><a href="mailto:webnoteshare@gmail.com">webnoteshare@gmail.com</a></li>
+                            <li><a href="tel:+94701576744">(+94) 070-157-6744</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-block">
+                        <h6>Conditions</h6>
+                        <ul class="opening-hours">
+                            <li><span class="opening-hours__days">Privacy Policy</span></li>
+                            <li><span class="opening-hours__days">Terms of Use</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- SVG Icons for Cart -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <defs>
+            <symbol id="cart" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M8.5 19a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 8.5 19ZM19 16H7a1 1 0 0 1 0-2h8.491a3.013 3.013 0 0 0 2.885-2.176l1.585-5.55A1 1 0 0 0 19 5H6.74a3.007 3.007 0 0 0-2.82-2H3a1 1 0 0 0 0 2h.921a1.005 1.005 0 0 1 .962.725l.155.545v.005l1.641 5.742A3 3 0 0 0 7 18h12a1 1 0 0 0 0-2Zm-1.326-9l-1.22 4.274a1.005 1.005 0 0 1-.963.726H8.754l-.255-.892L7.326 7ZM16.5 19a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5Z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- Cart Popup (Offcanvas) -->
+    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasCartLabel">Your Cart</h5>
+            <button type="button" class="btn-close-custom" data-bs-dismiss="offcanvas" aria-label="Close">
+                <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
+                    <path d="M3 3 L13 13 M13 3 L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-0">Introduction to HTML</h6>
+                        <button type="button" class="remove-pill" aria-label="Remove Introduction to HTML">Remove</button>
+                    </div>
+                    <span class="price-pill rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">100</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-0">Linear Programming</h6>
+                        <button type="button" class="remove-pill" aria-label="Remove Linear Programming">Remove</button>
+                    </div>
+                    <span class="price-pill rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">150</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-0">Job Design</h6>
+                        <button type="button" class="remove-pill" aria-label="Remove Job Design">Remove</button>
+                    </div>
+                    <span class="price-pill rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">200</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <strong>Total:</strong>
+                    <span class="price-pill price-pill--clean rounded-pill" role="text"><img src="assets/images/coin.png" alt="" class="coin" aria-hidden="true">450</span>
+                </li>
+            </ul>
+            <button class="w-100 btn btn-primary btn-lg" type="button">Check Out</button>
+        </div>
+    </div>
+
+    <script src="assets/js/wallet.js"></script>
+    <!-- Wallet & Coin Purchase Modal -->
+    <div id="walletModalOverlay" class="wallet-modal-overlay">
+      <div class="wallet-modal-content">
+        <!-- Modal Header -->
+        <div class="wallet-modal-header">
+          <h2>
+            My Wallet
+          </h2>
+          <button class="wallet-modal-close" aria-label="Close wallet">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="wallet-modal-body">
+          <!-- Balance Card (split) -->
+          <div class="wallet-balance-card split">
+            <div class="balance-left">
+              <div class="wallet-balance-label">Current Balance</div>
+            </div>
+            <div class="balance-right">
+              <div class="wallet-balance-amount"><img src="assets/images/coin.gif" alt="coin" class="balance-coin-icon"> <span id="walletBalance">-</span></div>
+            </div>
+          </div>
+
+          <!-- Purchase Coins Section -->
+          <div class="wallet-section-title">Buy Coins</div>
+
+          <!-- Preset Coin Packages -->
+          <div class="wallet-purchase-options">
+            <button class="coin-package-btn" data-coins="50">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 50</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 100</div>
+            </button>
+
+            <button class="coin-package-btn" data-coins="100">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 100</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 200</div>
+            </button>
+
+            <button class="coin-package-btn" data-coins="200">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 200</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 400</div>
+            </button>
+
+            <button class="coin-package-btn" data-coins="500">
+              <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 500</div>
+              <div class="coin-package-divider"></div>
+              <div class="coin-package-right">Rs. 1000</div>
+            </button>
+          </div>
+
+          <!-- Selected Package Details -->
+          <div id="walletPackageDetails" class="wallet-package-details" style="display: none;">
+            <!-- Populated by JavaScript -->
+          </div>
+
+          <!-- Custom Amount Section -->
+          <div class="custom-amount-section">
+            <label for="customCoinAmount" class="custom-amount-label">Or Enter Custom Amount</label>
+            <input type="number" id="customCoinAmount" class="custom-amount-input" placeholder="Enter number of coins" min="1" max="10000">
+            <div id="walletCustomPrice" class="wallet-price-display" style="display: none;"></div>
+          </div>
+
+          <!-- Purchase Button -->
+          <button class="wallet-purchase-btn"><i class="fas fa-credit-card"></i> Proceed to Payment</button>
+
+          <!-- Info Text -->
+          <p class="wallet-info-text">💳 Secure payment via Mastercard and Visa</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscribe Form Script -->
+    <script src="assets/js/subscribe.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Viewer</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <style>
+    * { box-sizing: border-box; }
+    html { height: 100%; overflow: hidden; }
+    body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
+    .viewer-iframe { width: 100%; height: 100%; border: 0; display: block; }
+    /* Hide all PDF viewer toolbars and UI elements */
+    #toolbarContainer, .toolbar, .pdfViewer-toolbar, [role="toolbar"], 
+    .pdfSidebar, .page-number-input, .scale-selectContainer, 
+    .openFile, .print, .download { display: none !important; }
+  </style>
+  <!-- Ensure spinner/back-to-top styles and script are available in viewer page -->
+  <link href="assets/css/navBar.css" rel="stylesheet">
+</head>
+<body>
+  <iframe id="viewerFrame" class="viewer-iframe" src=""></iframe>
+  <script src="assets/js/navBar.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/viewer.js"></script>
+</body>
+</html>

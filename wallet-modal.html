@@ -1,0 +1,75 @@
+<!-- Wallet & Coin Purchase Modal -->
+<div id="walletModalOverlay" class="wallet-modal-overlay">
+  <div class="wallet-modal-content">
+    <!-- Modal Header -->
+    <div class="wallet-modal-header">
+      <h2>
+        My Wallet
+      </h2>
+      <button class="wallet-modal-close" aria-label="Close wallet">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="wallet-modal-body">
+      <!-- Balance Card (split) -->
+      <div class="wallet-balance-card split">
+        <div class="balance-left">
+          <div class="wallet-balance-label">Current Balance</div>
+        </div>
+        <div class="balance-right">
+          <div class="wallet-balance-amount"><img src="assets/images/coin.gif" alt="coin" class="balance-coin-icon"> <span id="walletBalance">-</span></div>
+        </div>
+      </div>
+
+      <!-- Purchase Coins Section -->
+      <div class="wallet-section-title">Buy Coins</div>
+
+      <!-- Preset Coin Packages -->
+      <div class="wallet-purchase-options">
+        <button class="coin-package-btn" data-coins="50">
+          <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 50</div>
+          <div class="coin-package-divider"></div>
+          <div class="coin-package-right">Rs. 99</div>
+        </button>
+
+        <button class="coin-package-btn" data-coins="100">
+          <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 100</div>
+          <div class="coin-package-divider"></div>
+          <div class="coin-package-right">Rs. 189</div>
+        </button>
+
+        <button class="coin-package-btn" data-coins="200">
+          <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 200</div>
+          <div class="coin-package-divider"></div>
+          <div class="coin-package-right">Rs. 349</div>
+        </button>
+
+        <button class="coin-package-btn" data-coins="500">
+          <div class="coin-package-left"><img src="assets/images/coin.png" alt="coin" class="package-coin-icon"> 500</div>
+          <div class="coin-package-divider"></div>
+          <div class="coin-package-right">Rs. 799</div>
+        </button>
+      </div>
+
+      <!-- Selected Package Details -->
+      <div id="walletPackageDetails" class="wallet-package-details" style="display: none;">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <!-- Custom Amount Section -->
+      <div class="custom-amount-section">
+        <label for="customCoinAmount" class="custom-amount-label">Or Enter Custom Amount</label>
+        <input type="number" id="customCoinAmount" class="custom-amount-input" placeholder="Enter number of coins" min="1" max="10000">
+        <div id="walletCustomPrice" class="wallet-price-display" style="display: none;"></div>
+      </div>
+
+      <!-- Purchase Button -->
+      <button class="wallet-purchase-btn"><i class="fas fa-credit-card"></i> Proceed to Payment</button>
+
+      <!-- Info Text -->
+      <p class="wallet-info-text">💳 Secure payment via Mastercard and Visa</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<!-- 
+COPY & PASTE THIS SQL CODE DIRECTLY INTO phpMyAdmin SQL TAB
+============================================================
+
+To use:
+1. Open phpMyAdmin
+2. Select "noteshare" database
+3. Click on "SQL" tab
+4. Copy and paste the SQL code below
+5. Click "Go" to execute
+-->
+
+-- ============================================================
+-- SET ALL USERS TO 200 COINS (IMMEDIATE)
+-- ============================================================
+UPDATE users SET wallet_balance = 200 WHERE wallet_balance IS NOT NULL;
+
+-- ============================================================
+-- SET DEFAULT FOR NEW USERS TO 200 COINS
+-- ============================================================
+ALTER TABLE users MODIFY COLUMN wallet_balance INT DEFAULT 200;
+
+-- ============================================================
+-- VERIFY THE UPDATE
+-- ============================================================
+SELECT id, first_name, last_name, email, wallet_balance FROM users ORDER BY id;
